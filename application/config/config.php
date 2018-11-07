@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/fitness_fandeka/';
+$config['base_url'] = 'http://localhost/garjas/';
 $config['theme_admin'] = "theme/admin";
 $config['theme_frontend'] = "theme/frontend";
 

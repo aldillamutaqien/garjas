@@ -132,16 +132,19 @@ class Users extends CI_Controller {
                                 "user_type_id"=>$user_type,
                                 "user_status"=>$status,
                                 "date_updated"=>date("Y-m-d H:i:sa"));
+                        
                         $user_password = $this->input->post("user_password");
                         if($user->user_password != $user_password){
                             
                         $update_array["user_password"]= md5($user_password);
                         
                         }
-                        
+                        //print_r($update_array);die();
                             $this->load->model("common_model");
                             $this->common_model->data_update("users",$update_array,array("user_id"=>$user_id)
                                 );
+                               echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/users/";</script>
+                                ';
                             $data["error"] =  "<script type='text/javascript'>
                                                     swal('Sukses!', 'Data berhasil disimpan', 'success')
                                             </script>";
