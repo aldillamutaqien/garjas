@@ -34,6 +34,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-example-int form-horizental mg-t-15">
                             <div class="form-group">
                                 <div class="row">
@@ -104,16 +105,112 @@
                         </div>
 
                         <div class="form-example-int form-horizental mg-t-15">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                </div>
-                                <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                    <div class="fm-checkbox">
-                                        <label><input type="checkbox" class="i-checks" name="status"> <i></i> Status</label>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Jenis Kelamin</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                          <select name="jenis_kelamin" class="selectpicker" data-live-search="true">
+                                            <option value="" disabled selected>--Pilih Jenis Kelamin--</option>
+                                            <option value="Pria">Pria</option>
+                                            <option value="Wanita">Wanita</option>                                            
+                                          </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Tanggal Lahir</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">                                   
+                                    <div class="input-group date nk-int-st">
+                                        <span class="input-group-addon"></span>
+                                        <input type="text" name="tanggal_lahir" class="form-control">
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Kesatuan</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control input-sm" placeholder="Kesatuan" name="kesatuan">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Jabatan</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control input-sm" placeholder="Jabatan" name="jabatan">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Username</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                              <select name="id_user" class="selectpicker" data-live-search="true">
+                                                <option value="" disabled selected>--Pilih Username--</option>
+                                                 <?php foreach($user as $user){?>
+                                                        <option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name; ?></option>
+                                                    <?php } ?>
+                                              </select>
+                                        </div>              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-example-int form-horizental mg-t-15">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Matra</label>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                          <select name="matra" class="selectpicker" data-live-search="true">
+                                            <option value="" disabled selected>--Pilih Matra--</option>
+                                            <option value="TNI AD">TNI AD</option>
+                                            <option value="TNI AL">TNI AL</option>
+                                            <option value="TNI AU">TNI AU</option>                                           
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                         <div class="form-example-int mg-t-15">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
