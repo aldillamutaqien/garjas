@@ -123,7 +123,7 @@
                                 </li>
                                 <li><a href="#">Lihat Data</a>
                                 </li>
-                                <li><a href="#">Tambah Data</a>
+                                <li><a href="<?php echo site_url("personel/add_personel") ?>">Tambah Data</a>
                                 </li>
                                 <li><a href="#">Export Excell</a>
                                 </li>
