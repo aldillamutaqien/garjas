@@ -131,9 +131,9 @@
                         </div>
                         <div id="dataadmin" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="#">Lihat Data</a>
+                                <li><a href="<?php echo site_url("dataadmin/index") ?>">Lihat Data</a>
                                 </li>
-                                <li><a href="#">Tambah Data</a>
+                                <li><a href="<?php echo site_url("dataadmin/add_admin") ?>">Tambah Data</a>
                                 </li>
                             </ul>
                         </div>
