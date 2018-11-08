@@ -7,6 +7,10 @@
                         </li>
                         <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Pengguna</a>
                         </li>
+                        <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personil</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#dataadmin"><i class="notika-icon notika-support"></i> Data Admin</a>
+                        </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
@@ -110,6 +114,26 @@
                                 <li><a href="<?php echo site_url("users/index") ?>">Lihat</a>
                                 </li>
                                 <li><a href="<?php echo site_url("users/add_user") ?>">Tambah</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="datapersonil" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="#">Upload Data</a>
+                                </li>
+                                <li><a href="#">Lihat Data</a>
+                                </li>
+                                <li><a href="#">Tambah Data</a>
+                                </li>
+                                <li><a href="#">Export Excell</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="dataadmin" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="#">Lihat Data</a>
+                                </li>
+                                <li><a href="#">Tambah Data</a>
                                 </li>
                             </ul>
                         </div>
