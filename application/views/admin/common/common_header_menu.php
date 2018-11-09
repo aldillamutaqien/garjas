@@ -121,7 +121,7 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="#">Upload Data</a>
                                 </li>
-                                <li><a href="#">Lihat Data</a>
+                                 <li><a href="<?php echo site_url("personel/index") ?>">Lihat Data</a>
                                 </li>
                                 <li><a href="<?php echo site_url("personel/add_personel") ?>">Tambah Data</a>
                                 </li>
