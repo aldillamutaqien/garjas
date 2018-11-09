@@ -113,14 +113,14 @@
     </div>
     <!-- End Sale Statistic area-->
     <!-- Start Email Statistic area-->
-    <div class="notika-email-post-area">
+   <!--  <div class="notika-email-post-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="email-statis-inner notika-shadow">
                         <div class="email-ctn-round">
                             <div class="email-rdn-hd">
-                                <h2>Email Statistics</h2>
+                               <! <h2>Email Statistics</h2>
                             </div>
                             <div class="email-statis-wrap">
                                 <div class="email-round-nock">
@@ -296,10 +296,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- End Email Statistic area-->
     <!-- Start Realtime sts area-->
-    <div class="realtime-statistic-area">
+    <!-- <div class="realtime-statistic-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -421,7 +421,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- End Realtime sts area-->
     <!-- Start Footer area-->
         <?php  $this->load->view("admin/common/common_footer"); ?>
