@@ -28,6 +28,7 @@ class Personel extends CI_Controller {
                 $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
                 $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
                 $this->form_validation->set_rules('korps', 'Korps', 'trim|required');
+                $this->form_validation->set_rules('nrp', 'NRP', 'trim|required');
                 $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'trim|required');
                 $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'trim|required');
                 $this->form_validation->set_rules('matra', 'Matra', 'trim|required');
@@ -67,6 +68,8 @@ class Personel extends CI_Controller {
                         
                         $korps = $this->input->post("korps");
 
+                        $nrp = $this->input->post("nrp");
+
                         $jenis_kelamin = $this->input->post("jenis_kelamin");
                         
                         $tanggal_lahir = $this->input->post("tanggal_lahir");
@@ -101,6 +104,7 @@ class Personel extends CI_Controller {
                                 "nama"=>$nama,
                                 "pangkat"=>$pangkat,
                                 "korps"=>$korps,
+                                "nrp"=>$nrp,
                                 "jenis_kelamin"=>$jenis_kelamin,
                                 "tanggal_lahir"=>date("Y-m-d",strtotime($tanggal_lahir)),
                                 "matra"=>$matra,

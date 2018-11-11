@@ -11,6 +11,8 @@
                         </li>
                         <li><a data-toggle="tab" href="#dataadmin"><i class="notika-icon notika-support"></i> Data Admin</a>
                         </li>
+                        <li><a data-toggle="tab" href="#datanilai"><i class="notika-icon notika-edit"></i> Data Nilai</a>
+                        </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
@@ -135,6 +137,15 @@
                                 </li>
                                 <li><a href="<?php echo site_url("dataadmin/add_admin") ?>">Tambah Data</a>
                                 </li>
+                            </ul>
+                        </div>
+                        <div id="datanilai" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="<?php echo site_url("datanilai/index") ?>">Tambah Nilai</a>
+                                </li>
+                                <li><a href="<?php echo site_url("datanilai/tabel_nilai") ?>">Hasil Garjas</a>
+                                </li>
+                                
                             </ul>
                         </div>
                     </div>
