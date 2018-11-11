@@ -38,60 +38,32 @@
                     </div>
                     <div class="data-table-list">
                         <div class="basic-tb-hd">
-                            <h2>Daftar Pengguna</h2>
+                            <h2>Daftar Personel</h2>
                         </div>
                         <div class="table-responsive">
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Tipe User</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>NRP</th>
+                                        <th>Nama</th>
+                                        <th>Pangkat/Korps</th>
+                                        <th>Jabatan & Kesatuan</th>
+                                        <th>Matra</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                        <?php foreach($users as $user){?>
-                                        <tr>
-                                            <td><?php echo $user->user_id; ?></td>
-                                            <td><?php echo $user->user_name; ?></td>
-                                            <td><?php if($user->user_type_id=="1"){ echo "Front User"; } else echo "Admin" ?></td>
-                                            <td>
-                                                <div class="fm-checkbox">
-                                                    <label for='cb_<?php echo $user->user_id; ?>'>
-                                                      <input type="checkbox" class="tgl_checkbox i-checks"
-                                                       data-table="users" 
-                                                       data-status="user_status" 
-                                                       data-idfield="user_id"
-                                                       data-id="<?php echo $user->user_id; ?>" 
-                                                       id='cb_<?php echo $user->user_id; ?>'
-                                                       <?php echo ($user->user_status==1)? "checked" : ""; ?>
-                                                        >
-                                                      <span class="lever"></span>
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="<?php echo site_url("users/edit_user/".$user->user_id); ?>">
-                                                <i class="notika-icon notika-edit btn"></i></a>
-                                                &nbsp;&nbsp;&nbsp;&emsp;
-                                               <a href="<?php echo site_url("users/delete_user/".$user->user_id); ?>" onclick="return confirm('are you sure to delete?')" class=""> 
-
-                                               <!--  <a class="waves-effect waves-light m-b-xs sweetalert-warning"> -->
-                                               <i class="notika-icon notika-close btn"></i></a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
+                                        
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Tipe User</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                             </table>
