@@ -55,15 +55,33 @@
                                 </thead>
 
                                 <tbody>
+                                    <?php foreach($users as $users){?>
+                                        <tr>
+                                            <td><?php echo $users->id; ?></td>
+                                            <td><?php echo $users->nama; ?><br><?php echo $users->pangkat; ?> / <?php echo $users->nrp; ?></td>
+                                            <td><?php echo $users->jenis_kelamin; ?></td>
+                                            <td><?php echo date('d-m-Y',strtotime($users->tanggal_lahir)); ?></td>
+                                            <td><?php echo $users->kesatuan; ?> / <?php echo $users->matra; ?></td>
+                                            <td><?php echo $users->jabatan; ?> </td>
+                                            
+                                            <td>
+                                                <a href="<?php echo site_url("datanilai/add_nilai/".$users->id); ?>">
+                                                <i title="Input Nilai" class="notika-icon notika-edit btn"></i></a>
+                                                
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
                                         
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
+                                       <th>ID</th>
+                                        <th>NRP</th>
+                                        <th>Nama</th>
+                                        <th>Pangkat/Korps</th>
+                                        <th>Jabatan & Kesatuan</th>
+                                        <th>Matra</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </tfoot>
                             </table>
