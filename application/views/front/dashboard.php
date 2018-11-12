@@ -5,13 +5,13 @@
 
 <body>
 
-    <?php  $this->load->view("admin/common/common_header_top"); ?>
+    <?php  $this->load->view("front/common/common_header_top"); ?>
     <!-- End Header Top Area -->
     <!-- Mobile Menu start -->
-    <?php  $this->load->view("admin/common/common_header_mobile"); ?>
+    <?php  $this->load->view("front/common/common_header_mobile"); ?>
     <!-- Mobile Menu end -->
     <!-- Main Menu area start-->
-    <?php  $this->load->view("admin/common/common_header_menu"); ?>
+    <?php  $this->load->view("front/common/common_header_menu"); ?>
     <!-- Main Menu area End-->
     <!-- Start Status area -->
     <div class="notika-status-area">
@@ -526,7 +526,7 @@
     </div>
     <!-- End Realtime sts area-->
     <!-- Start Footer area-->
-        <?php  $this->load->view("admin/common/common_footer"); ?>
+        <?php  $this->load->view("front/common/common_footer"); ?>
     <!-- End Footer area-->
     <!-- jquery
         ============================================ -->
