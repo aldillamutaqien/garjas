@@ -62,10 +62,10 @@
                                             <td><?php echo $users->jabatan; ?> </td>
                                             <td><?php echo $users->user_name; ?></td>
                                             <td>
-                                                <a href="<?php echo site_url("users/edit_user/".$users->id); ?>">
+                                                <a href="<?php echo site_url("dataadmin/edit_admin/".$users->id); ?>">
                                                 <i class="notika-icon notika-edit btn"></i></a>
                                                 &nbsp;&nbsp;&nbsp;&emsp;
-                                               <a href="<?php echo site_url("users/delete_user/".$users->id); ?>" onclick="return confirm('are you sure to delete?')" class=""> 
+                                               <a href="<?php echo site_url("dataadmin/delete_admin/".$users->id); ?>" onclick="return confirm('are you sure to delete?')" class=""> 
 
                                                <!--  <a class="waves-effect waves-light m-b-xs sweetalert-warning"> -->
                                                <i class="notika-icon notika-close btn"></i></a>
