@@ -13,7 +13,7 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="<?php echo site_url("admin/dashboard") ?>">Dashboard</a>
+                                <li><a href="<?php echo site_url("front/dashboard") ?>">Dashboard</a>
                                 </li>
                                 <li><a href="#">&nbsp</a>
                                 </li>

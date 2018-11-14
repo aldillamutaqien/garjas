@@ -21,6 +21,12 @@ class Personel_model extends CI_Model{
         return $q->row();
     }
 
+    public function get_personel_by_id_user($id_user){
+        $q = $this->db->query("select * from personel where  id_user = '".$id_user."' 
+            and flag_del = 0 limit 1");
+        return $q->row();
+    }
+
 
 }
 ?>
