@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login Register | Aplikasi Garjas</title>
+    <title>Garjas</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -60,12 +60,18 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Login Register area Start-->
+    
+
     <div class="login-content">
         <!-- Login -->
-
         <div class="nk-block toggled" id="l-login">
-          <form method="post" action="#">
+          <form method="post" action="#">      
             <div class="nk-form">
+                <h4>Garjas </h4>
+                Physical Fitness Test Information System
+                <br>
+                <br>
+                <br>
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
                     <div class="nk-int-st">

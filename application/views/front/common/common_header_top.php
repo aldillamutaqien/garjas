@@ -16,7 +16,7 @@
                                         <h2></h2>
                                     </div>
                                     <div class="hd-message-info">
-                                        <a href="<?php echo site_url("users/change_password") ?>">
+                                        <a href="<?php echo site_url("front/change_password") ?>">
                                             <div class="hd-message-sn">
                                                 <div class="hd-message-img">
                                                     <img src="img/post/1.jpg" alt="" />
