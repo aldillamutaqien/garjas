@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                          <input type="text" class="form-control input-sm" placeholder="Nama" value="<?php echo $users->pangkat; ?>" disabled>
+                                          <input type="text" class="form-control input-sm" placeholder="Pangkat" value="<?php echo $users->pangkat; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" placeholder="Korps" name="korps">
+                                            <input type="text" class="form-control input-sm" placeholder="korps" value="<?php echo $users->korps; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" placeholder="NRP" name="nrp">
+                                            <input type="text" class="form-control input-sm" placeholder="NRP" value="<?php echo $users->nrp; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -87,12 +87,8 @@
                                         <label class="hrzn-fm">Jenis Kelamin</label>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                          <select name="jenis_kelamin" class="selectpicker" data-live-search="true">
-                                            <option value="" disabled selected>--Pilih Jenis Kelamin--</option>
-                                            <option value="Pria">Pria</option>
-                                            <option value="Wanita">Wanita</option>                                            
-                                          </select>
+                                        <div class="nk-int-st">
+                                          <input type="text" class="form-control input-sm" placeholder="jenis kelamin" value="<?php echo $users->jenis_kelamin; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -106,10 +102,9 @@
                                         <label class="hrzn-fm">Tanggal Lahir</label>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">                                   
-                                    <div class="input-group date nk-int-st">
-                                        <span class="input-group-addon"></span>
-                                        <input type="text" name="tanggal_lahir" class="form-control">
+                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">                                 
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control input-sm" placeholder="Tanggal Lahir" value="<?php echo $users->tanggal_lahir; ?>" disabled>
                                     </div>
                                 </div>
                                     </div>
@@ -125,7 +120,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" placeholder="Kesatuan" name="kesatuan">
+                                            <input type="text" class="form-control input-sm" placeholder="Kesatuan" value="<?php echo $users->kesatuan; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +135,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" placeholder="Jabatan" name="jabatan">
+                                            <input type="text" class="form-control input-sm" placeholder="Jabatan" value="<?php echo $users->jabatan; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -155,13 +150,8 @@
                                         <label class="hrzn-fm">Username</label>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                              <select name="id_user" class="selectpicker" data-live-search="true">
-                                                <option value="" disabled selected>--Pilih Username--</option>
-                                                 <?php foreach($user as $user){?>
-                                                        <option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name; ?></option>
-                                                    <?php } ?>
-                                              </select>
+                                        <div class="nk-int-st">
+                                              <input type="text" class="form-control input-sm" placeholder="username" value="<?php echo $users->id_user; ?>" disabled>
                                         </div>              
                                     </div>
                                 </div>
@@ -175,13 +165,8 @@
                                         <label class="hrzn-fm">Matra</label>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                          <select name="matra" class="selectpicker" data-live-search="true">
-                                            <option value="" disabled selected>--Pilih Matra--</option>
-                                            <option value="TNI AD">TNI AD</option>
-                                            <option value="TNI AL">TNI AL</option>
-                                            <option value="TNI AU">TNI AU</option>                                           
-                                          </select>
+                                        <div class="nk-int-st">
+                                          <input type="text" class="form-control input-sm" placeholder="Matra" value="<?php echo $users->matra; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
