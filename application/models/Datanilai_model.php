@@ -29,6 +29,30 @@ class Datanilai_model extends CI_Model{
         return $q->result();
     }
 
+    public function get_nilai_pull_up_by_id($tabel,$kelompok_umur,$pull_up){
+         $q = $this->db->query("select $kelompok_umur as nilai_pull_up from $tabel where  pull_up = '".$pull_up."' limit 1");
+        return $q->row();
+    }
+
+     public function get_nilai_sit_up_by_id($tabel,$kelompok_umur,$sit_up){
+         $q = $this->db->query("select $kelompok_umur as nilai_sit_up from $tabel where  sit_up = '".$sit_up."' limit 1");
+        return $q->row();
+    }
+
+     public function get_nilai_push_up_by_id($tabel,$kelompok_umur,$push_up){
+         $q = $this->db->query("select $kelompok_umur as nilai_push_up from $tabel where  push_up = '".$push_up."' limit 1");
+        return $q->row();
+    }
+    public function get_nilai_lari_by_id($tabel_lari,$kelompok_umur,$lari){
+         $q = $this->db->query("select $kelompok_umur as nilai_lari from $tabel_lari where  waktu_lari >= '".$lari."' ORDER BY id_nilai ASC limit 1");
+        return $q->row();
+    }
+
+    public function get_nilai_shuttle_run_by_id($tabel,$kelompok_umur,$shuttle_run){
+         $q = $this->db->query("select $kelompok_umur as nilai_shuttle_run from $tabel where  shuttle_run = '".$shuttle_run."'  limit 1");
+        return $q->row();
+    }
+
 
 }
 ?>

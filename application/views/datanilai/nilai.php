@@ -83,14 +83,19 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs wt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
-                                                    <span>Kelas & Nilai BMI</span>
-                                                    <h2><?php echo $data->kelas; ?> / <?php echo $data->nilai_bmi; ?></h2>
+                                                   
+                                                    <span>Kelas : <?php echo $kelas_postur; ?> </span>
+                                                    <span>BMI : <?php echo $bmi; ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <?php if($kelas_postur=="Luar Limit Atas" || $kelas_postur == "Luar Limit Atas" || $kelas_postur == "Luar Limit Bawah" || $kelas_postur == "Luar Limit Bawah"){ ?>
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                 <?php } else { ?>
                                                 <div class="invoice-hs wt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
-                                                    <span>Kategori</span>
-                                                    <h2><?php echo $data->kategori; ?></h2>
+                                                    <?php } ?>
+                                                   <span>Nilai Postur : <?php echo $nilai_postur; ?> </span>
+                                                    <span><?php echo $kategori; ?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,25 +105,25 @@
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                                                     <span>Waktu Lari</span>
-                                                    <h2><?php echo date('i:s',strtotime($data->lari)) ; ?></h2>
+                                                    <h2><?php echo date('i:s',strtotime($data->lari)) ; ?> <br> Nilai : <?php echo $nilai_total['lari']->nilai_lari ?></h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                                                     <span>Pull Up</span>
-                                                    <h2><?php echo $data->pull_up; ?> </h2>
+                                                    <h2> Jumlah : <?php echo $data->pull_up; ?> <br> Nilai : <?php echo $nilai_total['pull_up']->nilai_pull_up ?> </h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                                                     <span>Sit Up</span>
-                                                    <h2><?php echo $data->sit_up; ?></h2>
+                                                    <h2><?php echo $data->sit_up; ?><br> Nilai : <?php echo $nilai_total['sit_up']->nilai_sit_up ?></h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                                                     <span>Push Up</span>
-                                                    <h2><?php echo $data->push_up; ?></h2>
+                                                    <h2><?php echo $data->push_up; ?><br> Nilai : <?php echo $nilai_total['push_up']->nilai_push_up ?></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +133,7 @@
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                                                     <span>Shuttle Run</span>
-                                                    <h2><?php echo $data->shuttle_run ; ?></h2>
+                                                    <h2><?php echo $data->shuttle_run ; ?><br> Nilai : <?php echo $nilai_total['shuttle_run']->nilai_shuttle_run ?></h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -138,18 +143,25 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
-                                                    <span>Nilai Keseluruhan</span>
-                                                    <h2><?php echo $data->nilai; ?></h2>
+                                                <?php if($nilai_ab < 70 || $nilai_b < 70){ ?>
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0"> <?php } else { ?>
+                                                    <div class="invoice-hs">
+                                                    <?php } ?>
+                                                 
+                                                    <span>Nilai B = <?php echo $nilai_b; ?><br>Nilai A+B = <?php echo $nilai_ab; ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
-                                                    <span>Keterangan</span>
-                                                    <h2>Lulus / Tidak</h2>
+                                                <?php if($keterangan=="Lulus"){ ?>
+                                                <div class="invoice-hs"> 
+                                                <?php } else { ?>
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0"> <?php } ?>
+                                                    <span>Total Nilai : <?php echo $jumlah_nilai ?></span>
+                                                    <h2><?php echo $keterangan ?> / <?php echo $status; ?></h2>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

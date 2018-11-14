@@ -130,7 +130,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <input type="text" class="form-control" data-mask="99-99" name="waktu_lari" placeholder="Menit-Detik">
+                                        <input type="text" class="form-control" data-mask="99:99" name="waktu_lari" placeholder="Menit-Detik">
                                     </div>
                                 </div>
                                 </div>
@@ -193,7 +193,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <input type="text" class="form-control" data-mask="99-99" name="waktu_renang" placeholder="Menit-Detik">
+                                        <input type="text" class="form-control" data-mask="99:99" name="waktu_renang" placeholder="Menit-Detik">
                                     </div>
                                 </div>
                                 </div>
