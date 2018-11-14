@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
-                                 <a href="<?php echo site_url("users/add_user/"); ?>"><i class="notika-icon notika-success"></i> Tambah</a>
+                                 <a href="<?php echo site_url("personel/add_personel/"); ?>"><i class="notika-icon notika-success"></i> Tambah</a>
                                 
                                 </div>
                             </div>
@@ -65,8 +65,10 @@
                                             <td><?php echo $users->jabatan; ?> </td>
                                             
                                             <td>
-                                                <a href="<?php echo site_url("datanilai/add_nilai/".$users->id); ?>">
-                                                <i title="Input Nilai" class="notika-icon notika-edit btn"></i></a>
+                                                <a href="<?php echo site_url("personel/edit_personel/".$users->id); ?>">
+                                                <i title="Edit" class="notika-icon notika-draft"></i></a>
+                                                <a href="<?php echo site_url("personel/delete_personel/".$users->id); ?>">
+                                                <i title ="delete" class="notika-icon notika-close btn waves-effect"></i></a>
                                                 
                                             </td>
                                         </tr>
