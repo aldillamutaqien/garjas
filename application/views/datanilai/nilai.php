@@ -26,6 +26,7 @@
                                             <h2 >Data Nilai Garjas</h2>
                                              <span>Tanggal Pelaksanaan : <?php echo date('d-m-Y',strtotime($data->date_created)) ; ?></span>
                                         </div>
+                                         
                                         <div class="invoice-hds-pro">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -103,25 +104,41 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <?php if($nilai_total['lari']->nilai_lari<41){ ?> 
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                <?php } else { ?>
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                    <?php } ?>
                                                     <span>Waktu Lari</span>
                                                     <h2><?php echo date('i:s',strtotime($data->lari)) ; ?> <br> Nilai : <?php echo $nilai_total['lari']->nilai_lari ?></h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                              <?php if($nilai_total['pull_up']->nilai_pull_up<41){ ?> 
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                <?php } else { ?>
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                    <?php } ?>
                                                     <span>Pull Up</span>
                                                     <h2> Jumlah : <?php echo $data->pull_up; ?> <br> Nilai : <?php echo $nilai_total['pull_up']->nilai_pull_up ?> </h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <?php if($nilai_total['sit_up']->nilai_sit_up<41){ ?> 
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                <?php } else { ?>
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                    <?php } ?>
                                                     <span>Sit Up</span>
                                                     <h2><?php echo $data->sit_up; ?><br> Nilai : <?php echo $nilai_total['sit_up']->nilai_sit_up ?></h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                               <?php if($nilai_total['push_up']->nilai_push_up<41){ ?> 
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                <?php } else { ?>
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                    <?php } ?>
                                                     <span>Push Up</span>
                                                     <h2><?php echo $data->push_up; ?><br> Nilai : <?php echo $nilai_total['push_up']->nilai_push_up ?></h2>
                                                 </div>
@@ -131,7 +148,11 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <?php if($nilai_total['shuttle_run']->nilai_shuttle_run<41){ ?> 
+                                                <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                <?php } else { ?>
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                                                    <?php } ?>
                                                     <span>Shuttle Run</span>
                                                     <h2><?php echo $data->shuttle_run ; ?><br> Nilai : <?php echo $nilai_total['shuttle_run']->nilai_shuttle_run ?></h2>
                                                 </div>
@@ -139,7 +160,7 @@
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="invoice-hs date-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                                                     <span>Renang</span>
-                                                    <h2><?php echo date('i:s',strtotime($data->renang)) ; ?></h2>
+                                                    <h2><?php echo date('i:s',strtotime($data->renang)) ; ?><br> Nilai : <?php echo $nilai_total['renang']->nilai_renang ?></h2>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -164,6 +185,13 @@
 
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                                            <div class="breadcomb-report">
+                                             <a href="<?php echo site_url("datanilai/update_nilai/".$data->id); ?>"><i class="notika-icon notika-success"></i> Update Nilai</a>
+                                            
+                                            </div>
+                                        </div>
                             </div>
                         </div>
                     </div>

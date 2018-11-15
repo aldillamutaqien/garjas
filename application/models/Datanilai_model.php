@@ -30,7 +30,9 @@ class Datanilai_model extends CI_Model{
     }
 
     public function get_nilai_pull_up_by_id($tabel,$kelompok_umur,$pull_up){
+        $query = "select $kelompok_umur as nilai_pull_up from $tabel where  pull_up = '".$pull_up."' limit 1";
          $q = $this->db->query("select $kelompok_umur as nilai_pull_up from $tabel where  pull_up = '".$pull_up."' limit 1");
+
         return $q->row();
     }
 
@@ -45,6 +47,23 @@ class Datanilai_model extends CI_Model{
     }
     public function get_nilai_lari_by_id($tabel_lari,$kelompok_umur,$lari){
          $q = $this->db->query("select $kelompok_umur as nilai_lari from $tabel_lari where  waktu_lari >= '".$lari."' ORDER BY id_nilai ASC limit 1");
+        return $q->row();
+    }
+
+     public function get_nilai_renang_by_id($tabel_renang,$kelompok_umur,$renang){
+        if($renang < "00:00:39" && $tabel_renang == "ren_mil_das_pria" ){
+            $q = $this->db->query("select $kelompok_umur as nilai_renang from $tabel_renang where  waktu_renang = '00:00:39' ORDER BY id_renang ASC limit 1");
+        } else if($renang < "00:00:59" && $tabel_renang == "ren_mil_das_wan" ){
+            $q = $this->db->query("select $kelompok_umur as nilai_renang from $tabel_renang where  waktu_renang = '00:00:59' ORDER BY id_renang ASC limit 1");
+        } else if($renang > "00:03:01" && $tabel_renang == "ren_mil_das_wan" ){
+            $q = $this->db->query("select $kelompok_umur as nilai_renang from $tabel_renang where  waktu_renang = '00:03:01' ORDER BY id_renang ASC limit 1");
+        } else if($renang > "00:02:49" && $tabel_renang == "ren_mil_das_pria" ){
+            $q = $this->db->query("select $kelompok_umur as nilai_renang from $tabel_renang where  waktu_renang = '00:02:49' ORDER BY id_renang ASC limit 1");
+        } else {
+           $q = $this->db->query("select $kelompok_umur as nilai_renang from $tabel_renang where  waktu_renang >= '".$renang."' ORDER BY id_renang ASC limit 1");  
+        }
+
+        
         return $q->row();
     }
 

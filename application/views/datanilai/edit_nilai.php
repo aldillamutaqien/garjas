@@ -18,7 +18,7 @@
                     <form action="#" method="post">
                     <div class="form-example-wrap mg-t-30">
                         <div class="cmp-tb-hd cmp-int-hd">
-                            <h2>Form Input Nilai</h2>
+                            <h2>Form Edit Nilai</h2>
                         </div>
                         <div class="form-example-int form-horizental">
                             <div class="form-group">
@@ -91,6 +91,7 @@
                             </div>
                         </div>
                         <hr>
+                        <?php foreach($nilai as $nilai){ ?>
                         <div class="form-example-int form-horizental mg-t-15">
                             <div class="form-group">
                                 <div class="row">
@@ -99,7 +100,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" name="tinggi_badan" placeholder="Tinggi Badan (cm)">
+                                            <input type="text" class="form-control input-sm" name="tinggi_badan" placeholder="Tinggi Badan (cm)" value="<?php echo $nilai->tinggi_badan; ?>" >
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +114,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" name="berat_badan" placeholder="Berat Badan (kg)">
+                                            <input type="text" class="form-control input-sm" name="berat_badan" placeholder="Berat Badan (kg)" value="<?php echo $nilai->berat_badan; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +131,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <input type="text" class="form-control" data-mask="99:99" name="waktu_lari" placeholder="Menit-Detik">
+                                        <input type="text" class="form-control" data-mask="99:99:99" name="waktu_lari" placeholder="Menit-Detik" value="<?php echo $nilai->lari; ?>">
                                     </div>
                                 </div>
                                 </div>
@@ -145,7 +146,8 @@
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" name="pull_up" placeholder="Pull Up">
+                                            <input type="text" class="form-control input-sm" name="pull_up" placeholder="Pull Up"
+                                            value="<?php echo $nilai->pull_up; ?>">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
@@ -153,7 +155,7 @@
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" name="sit_up" placeholder="Sit Up">
+                                            <input type="text" class="form-control input-sm" name="sit_up" placeholder="Sit Up" value="<?php echo $nilai->sit_up; ?>">
                                         </div>
                                     </div>                                                                           
                                 </div>                               
@@ -167,7 +169,7 @@
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" name="push_up" placeholder="Push Up">
+                                            <input type="text" class="form-control input-sm" name="push_up" placeholder="Push Up" value="<?php echo $nilai->push_up; ?>">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
@@ -175,7 +177,7 @@
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" name="suttle_run" placeholder="Shuttle Run (detik)">
+                                            <input type="text" class="form-control input-sm" name="suttle_run" placeholder="Shuttle Run (detik)" value="<?php echo $nilai->shuttle_run; ?>">
                                         </div>
                                     </div>                                                                           
                                 </div>                               
@@ -193,7 +195,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <input type="text" class="form-control" data-mask="99:99" name="waktu_renang" placeholder="Menit-Detik">
+                                        <input type="text" class="form-control" data-mask="99:99:99" name="waktu_renang" placeholder="Menit-Detik" value="<?php echo $nilai->renang; ?>">
                                     </div>
                                 </div>
                                 </div>
@@ -204,19 +206,20 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                        <label class="hrzn-fm">Tanggal Pelaksanaan Garjas</label>
+                                        <label class="hrzn-fm">Tanggal Pelaksanaan Garjas </label>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                     <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">                                   
                                     <div class="input-group date nk-int-st">
                                         <span class="input-group-addon"></span>
-                                        <input type="text" name="tgl_pelaksanaan" class="form-control">
+                                        <input type="text" name="tgl_pelaksanaan" class="form-control" value="<?php echo date('d/m/Y',strtotime($nilai->date_created)) ; ?>">
                                     </div>
                                 </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
                         
                         
                         <div class="form-example-int mg-t-15">

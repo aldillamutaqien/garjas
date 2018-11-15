@@ -8,6 +8,7 @@ class Datanilai extends CI_Controller {
                 // Your own constructor code
                 $this->load->database();
                 $this->load->helper('login_helper');
+                date_default_timezone_set("Asia/Bangkok");
     }
 	public function index()
 	{
@@ -90,9 +91,10 @@ class Datanilai extends CI_Controller {
                     
         		}else
                 {
-                        
+                        $this->load->model("datanilai_model");
                         $tinggi_badan = $this->input->post("tinggi_badan");
                         $pok_umur = $this->input->post("kelompok_umur");
+                        $jenis_kelamin = $this->input->post("jenis_kelamin");
                         $berat_badan = $this->input->post("berat_badan");
                         $waktu_lari = "00:".$this->input->post("waktu_lari");
                         $pull_up = $this->input->post("pull_up");
@@ -101,17 +103,51 @@ class Datanilai extends CI_Controller {
                         $suttle_run = $this->input->post("suttle_run");
                         $waktu_renang = "00:".$this->input->post("waktu_renang");
                         $tgl_pelaksanaan = $this->input->post("tgl_pelaksanaan");
+
+                        $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
+                         //print("<pre>".print_r($nilai,true)."</pre>");die();
+                        $bmi = round( $this->get_bmi($tinggi_badan,$berat_badan),2);
+                        //print_r($bmi);die();
+                        $postur = $this->kelas_postur($bmi);
+                        //print_r($postur);die();
+                        $kelas_postur = $postur['kelas'];
+                        //print_r($kelas_postur);die();
+                        $nilai_postur = $postur['nilai'];
+                        if($kelas_postur=="Luar Limit Atas" || $kelas_postur == "Limit Atas" || $kelas_postur == "Luar Limit Bawah" || $kelas_postur == "Limit Bawah"){
+                            $kategori = "Tidak Memenuhi Sarat";
+                        } else {
+                            $kategori = "Memenuhi Sarat";
+                        }
+          
+
+                        $nilai_garjas = $this->get_nilai_b($pok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$waktu_lari,$suttle_run,$waktu_renang);
+                        $nilai_renang = $nilai_garjas['renang']->nilai_renang;
+                        $nilai_b = ($nilai_garjas['pull_up']->nilai_pull_up + $nilai_garjas['sit_up']->nilai_sit_up + $nilai_garjas['push_up']->nilai_push_up+$nilai_garjas['shuttle_run']->nilai_shuttle_run) / 4;
+                        $nilai_ab = ($nilai_b + $nilai_garjas['lari']->nilai_lari) / 2;
+
+                        $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_garjas['lari']->nilai_lari,$nilai_garjas['pull_up']->nilai_pull_up,$nilai_garjas['sit_up']->nilai_sit_up,$nilai_garjas['push_up']->nilai_push_up,$nilai_garjas['shuttle_run']->nilai_shuttle_run);
+                        $keterangan = $penilaian['keterangan'];
+                        $nilai_total = $penilaian['nilai_total'];
+                       //print_r($nilai_total);die();
+                       
+
                         $insert_array = array(
                                 "id_data_personil"=>$user_id,
                                 "kelompok_umur"=>$pok_umur,
                                 "tinggi_badan"=>$tinggi_badan,
                                 "berat_badan"=>$berat_badan,
+                                "kelas"=>$kelas_postur,
+                                "nilai_bmi"=>$bmi,
+                                "nilai_postur"=>$nilai_postur,
+                                "kategori"=>$kategori,
                                 "lari"=>$waktu_lari,
                                 "pull_up"=>$pull_up,
                                 "sit_up"=>$sit_up,
                                 "push_up"=>$push_up,
                                 "shuttle_run"=>$suttle_run,
                                 "renang"=>$waktu_renang,
+                                "nilai" => $nilai_total,
+                                "keterangan" =>$keterangan,
                                 "date_created"=>date("Y-m-d",strtotime($tgl_pelaksanaan)),
                                  "flag_del"=>0
                                 );
@@ -174,27 +210,17 @@ class Datanilai extends CI_Controller {
             $this->load->model("datanilai_model");
 
             $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
-             //print("<pre>".print_r($nilai[0]->kelompok_umur,true)."</pre>");die();
-            $bmi = round( $this->get_bmi($nilai[0]->tinggi_badan,$nilai[0]->berat_badan),2);
+             //print("<pre>".print_r($nilai,true)."</pre>");die();
+            //$bmi = round( $this->get_bmi($nilai[0]->tinggi_badan,$nilai[0]->berat_badan),2);
             //print_r($bmi);die();
+            $bmi = $nilai[0]->nilai_bmi;
+            $kelas_postur = $nilai[0]->kelas;
+            $nilai_postur = $nilai[0]->nilai_postur;
+            $kategori = $nilai[0]->kategori;
             $data['bmi'] = $bmi;
-            $postur = $this->kelas_postur($bmi);
-            //print_r($postur);die();
-            $kelas_postur = $postur['kelas'];
-             $data['kelas_postur'] = $kelas_postur;
-            //print_r($kelas_postur);die();
-            $nilai_postur = $postur['nilai'];
-            
-           
-           
-            $data['nilai_postur'] = $nilai_postur;
-           
-            if($kelas_postur=="Luar Limit Atas" || $kelas_postur == "Limit Atas" || $kelas_postur == "Luar Limit Bawah" || $kelas_postur == "Limit Bawah"){
-                $kategori = "Tidak Memenuhi Sarat";
-            } else {
-                $kategori = "Memenuhi Sarat";
-            }
-             $data['kategori'] = $kategori;
+            $data['kelas_postur'] = $kelas_postur;
+            $data['nilai_postur'] = $nilai_postur;           
+            $data['kategori'] = $kategori;
 
             $kelompok_umur = $nilai[0]->kelompok_umur;
             //print_r($kelompok_umur);die();
@@ -204,24 +230,28 @@ class Datanilai extends CI_Controller {
             $push_up = $nilai[0]->push_up;
             $lari = $nilai[0]->lari;
             $shuttle_run = $nilai[0]->shuttle_run;
-            //print_r($shuttle_run);die();
+            $renang = $nilai[0]->renang;
+            //print_r($renang);die();
             $push_up = $nilai[0]->push_up;
             $shuttle_run = $nilai[0]->shuttle_run;
             //$cek_nilai = $this->cek_nilai_max($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run);
-            $nilai_total = $this->get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run);
+            $nilai_total = $this->get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run,$renang);
             $data['nilai_total'] = $nilai_total;
+            //print_r($data['nilai_total']);die();
             $nilai_b = ($nilai_total['pull_up']->nilai_pull_up + $nilai_total['sit_up']->nilai_sit_up + $nilai_total['push_up']->nilai_push_up+$nilai_total['shuttle_run']->nilai_shuttle_run) / 4;
             //print_r($nilai_total['sit_up']->nilai_sit_up);die();
-            $data['nilai_b'] = $nilai_b;
+            $nilai_renang = $nilai_total['renang']->nilai_renang;
+            //print_r($nilai_renang);
+            $data['nilai_b'] = round($nilai_b,2);
             $nilai_ab = ($nilai_b + $nilai_total['lari']->nilai_lari) / 2;
-            $data['nilai_ab']= $nilai_ab;
+            $data['nilai_ab']= round($nilai_ab,2);
             //print_r($nilai_ab);die();
             $data["nilai"] = $nilai;
-            $nilai_renang = 85;
-            $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur);
+            
+            $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_total['lari']->nilai_lari,$nilai_total['pull_up']->nilai_pull_up,$nilai_total['sit_up']->nilai_sit_up,$nilai_total['push_up']->nilai_push_up,$nilai_total['shuttle_run']->nilai_shuttle_run);
             // print_r($penilaian);die();
             // print_r($kategori.'<br>'.$nilai_ab.'<br>'.$nilai_total);die();
-            $data['jumlah_nilai'] = $penilaian['nilai_total'];
+            $data['jumlah_nilai'] = round($nilai[0]->nilai,2);
             $data['keterangan'] = $penilaian['keterangan'];
             $data['status'] = $penilaian['status'];
 
@@ -229,7 +259,7 @@ class Datanilai extends CI_Controller {
             $this->load->view("datanilai/nilai",$data);
     }
 
-    function nilai_total($kategori,$nilai_garjas,$nilai_renang,$nilai_postur){
+    function nilai_total($kategori,$nilai_garjas,$nilai_renang,$nilai_postur,$pull_up,$sit_up,$push_up,$lari,$shuttle_run){
         $penilaian = array();
         if($kategori=="Memenuhi Sarat"){
             $penilaian['nilai_total'] = (($nilai_garjas * 90) / 100) + (($nilai_renang * 10) / 100);
@@ -238,10 +268,10 @@ class Datanilai extends CI_Controller {
              $penilaian['nilai_total'] = (($nilai_garjas * 80) / 100) + (($nilai_renang * 10) / 100) + (($nilai_postur * 10) / 100);
         }
 
-          if($penilaian['nilai_total']<70){
-                $penilaian['keterangan'] = "Tidak Lulus";
-            } else {
+          if($penilaian['nilai_total']>70 && $nilai_garjas > 70 && $lari>40 && $pull_up>40 && $sit_up > 40 && $push_up > 40 && $shuttle_run > 40){
                 $penilaian['keterangan'] = "Lulus";
+            } else  {
+                $penilaian['keterangan'] = "Tidak Lulus";
             }
 
             if($penilaian['nilai_total']>=81 && $penilaian['nilai_total']<=100 ){
@@ -296,128 +326,165 @@ class Datanilai extends CI_Controller {
         return $postur;
     }
 
-    function get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run){
+    function get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run,$renang){
         $nilai = array();
          $this->load->model("datanilai_model");
          if($jenis_kelamin=="Pria"){
             $tabel = "nilai_b_pria";
             $tabel_lari = "lari_pria";
-         } else { $tabel ="nilai_b_wanita";  $tabel_lari = "lari_wanita";}
+            $tabel_renang = "ren_mil_das_pria";
+         } else { 
+            $tabel ="nilai_b_wanita";  
+            $tabel_lari = "lari_wanita"; 
+            $tabel_renang = "ren_mil_das_wan";}
 
          $nilai["pull_up"] = $this->datanilai_model->get_nilai_pull_up_by_id($tabel,$kelompok_umur,$pull_up);
          $nilai["sit_up"] = $this->datanilai_model->get_nilai_sit_up_by_id($tabel,$kelompok_umur,$sit_up);
          $nilai["push_up"] = $this->datanilai_model->get_nilai_push_up_by_id($tabel,$kelompok_umur,$push_up);
          $nilai["lari"] = $this->datanilai_model->get_nilai_lari_by_id($tabel_lari,$kelompok_umur,$lari);
          $nilai["shuttle_run"] = $this->datanilai_model->get_nilai_shuttle_run_by_id($tabel,$kelompok_umur,$shuttle_run);
+         $nilai["renang"] = $this->datanilai_model->get_nilai_renang_by_id($tabel_renang,$kelompok_umur,$renang);
          return $nilai;
     }
-
-    //  function cek_nilai_max($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run){
-    //     $nilai = array();
-    //      $this->load->model("datanilai_model");
-    //      if($jenis_kelamin=="Pria"){
-    //         $tabel = "nilai_b_pria";
-    //         $tabel_lari = "lari_pria";
-    //      } else { $tabel ="nilai_b_wanita";  $tabel_lari = "lari_wanita";}
-
-    //      $nilai["pull_up"] = $this->datanilai_model->get_nilai_pull_up_by_id($tabel,$kelompok_umur,$pull_up);
-    //      $nilai["sit_up"] = $this->datanilai_model->get_nilai_sit_up_by_id($tabel,$kelompok_umur,$sit_up);
-    //      $nilai["push_up"] = $this->datanilai_model->get_nilai_push_up_by_id($tabel,$kelompok_umur,$push_up);
-    //      $nilai["lari"] = $this->datanilai_model->get_nilai_lari_by_id($tabel_lari,$kelompok_umur,$lari);
-    //      $nilai["shuttle_run"] = $this->datanilai_model->get_nilai_shuttle_run_by_id($tabel,$kelompok_umur,$shuttle_run);
-    //      return $nilai;
-    // }
 
     function get_bmi($tinggi,$berat){
         $bmi = $berat / (($tinggi/100)*($tinggi/100));
         return $bmi;
     }
-// function delete_user($user_id){
-//         $data = array();
-//             $this->load->model("users_model");
-//             $user  = $this->users_model->get_user_by_id($user_id);
-//            if($user){
-//                 $this->db->query("update users set flag_del = 1 where user_id = '".$user->user_id."'");
-//                 redirect("users");
-//            }
-//     }
 
- // function change_password(){
- //        if(_is_frontend_user_login($this)){
- //            $this->load->model("users_model");
- //                $user_data  = $this->users_model->get_user_by_id(_get_current_user_id($this));
- //                $data["user_data"] = $user_data;
 
- //            if($_POST){
+     public function update_nilai($user_id){
+        if(_is_user_login($this)){
+            $data = array();
+            $this->load->model("datanilai_model");
+            $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
+           // print("<pre>".print_r($nilai[0]->id_data_personil,true)."</pre>");die();
+            $data["nilai"] = $nilai;
+            //print("<pre>".print_r($data["nilai"],true)."</pre>");die();
+            $this->load->model("personel_model");
+            $this->load->model("users_model");
+            $data["user_types"] = $this->users_model->get_user_type();
+            $user = $this->personel_model->get_personel_by_id($nilai[0]->id_data_personil);
+            //print("<pre>".print_r($user,true)."</pre>");die();
+            $data["user"] = $user;
+            $tgl_lahir = $user->tanggal_lahir;
+            $kelompok_umur = $this->kelompok_umur_by_usia($tgl_lahir);
+            $data["kelompok_umur"] = $kelompok_umur;
+            
+            if($_POST){
+                $this->load->library('form_validation');
                 
- //                $this->load->model("users_model");
-           
- //                $this->load->library('form_validation');
+                $this->form_validation->set_rules('kelompok_umur', 'Kelompok Umur', 'trim|required');
+                $this->form_validation->set_rules('tinggi_badan', 'Tinggi Badan', 'trim|required');
+                $this->form_validation->set_rules('berat_badan', 'Berat Badan', 'trim|required');
+                $this->form_validation->set_rules('waktu_lari', 'Lari', 'trim|required');
+                $this->form_validation->set_rules('pull_up', 'Pull Up', 'trim|required');
+                $this->form_validation->set_rules('sit_up', 'Sit Up', 'trim|required');
+                $this->form_validation->set_rules('push_up', 'Push Up', 'trim|required');
+                $this->form_validation->set_rules('waktu_renang', 'Waktu Renang', 'trim|required');             
                 
- //                $this->form_validation->set_rules('c_password', 'Current Password', 'trim|required');
- //                $this->form_validation->set_rules('n_password', 'New Password', 'trim|required');
- //                $this->form_validation->set_rules('r_password', 'Re Password', 'trim|required');
+                if ($this->form_validation->run() == FALSE) 
+             {
+                  
+                $error_array = $this->form_validation->error_string();
+                $error_json = json_encode(strip_tags($error_array));
+                $error_clean = str_replace(['"', '"'], '', $error_json);
+
                 
- //                if ($this->form_validation->run() == FALSE) {
-                   
- //        		    $error_array = $this->form_validation->error_string();
- //                    $error_json = json_encode(strip_tags($error_array));
- //                    $error_clean = str_replace(['"', '"'], '', $error_json);
- //                    $data["error"] =  "<script type='text/javascript'>
- //                                                    var teks = ' ".$error_clean."';
- //                                                    swal({   
- //                                                            title: '',   
- //                                                            text: teks,   
- //                                                            type: 'warning',   
- //                                                            showCancelButton: false,   
- //                                                            confirmButtonColor: '#DD6B55',   
- //                                                            confirmButtonText: 'OK', 
- //                                                            closeOnConfirm: false 
- //                                                        });
- //                                            </script>";
- //        		}else {
-                   
- //                    if($user_data->user_password == md5($this->input->post("c_password"))){
-                     
- //                        $n_password = $this->input->post("n_password");
- //                        $r_password = $this->input->post("r_password");
-
-                       
-                        
- //                        if($n_password == $r_password){
- //                            $this->load->model("common_model");
- //                            $resid = $this->common_model->data_update("users",
- //                                array("user_password"=>md5($n_password)),array("user_id"=>_get_current_user_id($this)));
-                           
- //                            echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/users/change_password";</script>
- //                                ';
- //                            $data["error"] = "<script type='text/javascript'>
- //                                                    swal('Sukses!', 'Data berhasil disimpan', 'success')
- //                                            </script>";
- //                        }
-                        
- //                    }else{
- //                        $data["error"] = "<script type='text/javascript'>
- //                                                    swal({   
- //                                                            title: '',   
- //                                                            text: 'Password tidak cocok',   
- //                                                            type: 'warning',   
- //                                                            showCancelButton: false,   
- //                                                            confirmButtonColor: '#DD6B55',   
- //                                                            confirmButtonText: 'OK', 
- //                                                            closeOnConfirm: false 
- //                                                    });
- //                                         </script>";
-
- //                    }         
-                        
- //                }
- //            }    
                
- //                $this->load->view("users/change_password",$data);
+                    $data["error"] =  "<script type='text/javascript'>
+                                                    var teks = ' ".$error_clean."';
+                                                    swal({   
+                                                            title: '',   
+                                                            text: teks,   
+                                                            type: 'warning',   
+                                                            showCancelButton: false,   
+                                                            confirmButtonColor: '#DD6B55',   
+                                                            confirmButtonText: 'OK', 
+                                                            closeOnConfirm: false 
+                                                        });
+                                            </script>";
+                    
+             }else
+                {
+                        $this->load->model("datanilai_model");
+                        $tinggi_badan = $this->input->post("tinggi_badan");
+                        $jenis_kelamin = $this->input->post("jenis_kelamin");
+                        $pok_umur = $this->input->post("kelompok_umur");
+                        $berat_badan = $this->input->post("berat_badan");
+                        $waktu_lari = $this->input->post("waktu_lari");
+                        $pull_up = $this->input->post("pull_up");
+                        $sit_up = $this->input->post("sit_up");
+                        $push_up = $this->input->post("push_up");
+                        $suttle_run = $this->input->post("suttle_run");
+                        $waktu_renang = $this->input->post("waktu_renang");
+                        $tgl_pelaksanaan = $this->input->post("tgl_pelaksanaan");
 
- //        }
- //    }   
+                        $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
+                         //print("<pre>".print_r($nilai,true)."</pre>");die();
+                        $bmi = round( $this->get_bmi($tinggi_badan,$berat_badan),2);
+                        //print_r($bmi);die();
+                        $postur = $this->kelas_postur($bmi);
+                        //print_r($postur);die();
+                        $kelas_postur = $postur['kelas'];
+                        //print_r($kelas_postur);die();
+                        $nilai_postur = $postur['nilai'];
+                        if($kelas_postur=="Luar Limit Atas" || $kelas_postur == "Limit Atas" || $kelas_postur == "Luar Limit Bawah" || $kelas_postur == "Limit Bawah"){
+                            $kategori = "Tidak Memenuhi Sarat";
+                        } else {
+                            $kategori = "Memenuhi Sarat";
+                        }
+          
+
+                        $nilai_garjas = $this->get_nilai_b($pok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$waktu_lari,$suttle_run,$waktu_renang);
+                        $nilai_renang = $nilai_garjas['renang']->nilai_renang;
+                        $nilai_b = ($nilai_garjas['pull_up']->nilai_pull_up + $nilai_garjas['sit_up']->nilai_sit_up + $nilai_garjas['push_up']->nilai_push_up+$nilai_garjas['shuttle_run']->nilai_shuttle_run) / 4;
+                        $nilai_ab = ($nilai_b + $nilai_garjas['lari']->nilai_lari) / 2;
+
+                        $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_garjas['lari']->nilai_lari,$nilai_garjas['pull_up']->nilai_pull_up,$nilai_garjas['sit_up']->nilai_sit_up,$nilai_garjas['push_up']->nilai_push_up,$nilai_garjas['shuttle_run']->nilai_shuttle_run);
+                        $keterangan = $penilaian['keterangan'];
+                        $nilai_total = $penilaian['nilai_total'];
+                        
+                        $update_array = array(
+                                "kelas"=>$kelas_postur,
+                                "nilai_bmi"=>$bmi,
+                                "nilai_postur"=>$nilai_postur,
+                                "kategori"=>$kategori,
+                                "nilai" => $nilai_total,
+                                "keterangan" =>$keterangan,
+                                "tinggi_badan"=>$tinggi_badan,
+                                "kelompok_umur"=>$pok_umur,
+                                "berat_badan"=>$berat_badan,
+                                "lari"=>$waktu_lari,
+                                "pull_up"=>$pull_up,
+                                "sit_up"=>$sit_up,
+                                "push_up"=>$push_up,
+                                "shuttle_run"=>$suttle_run,
+                                "renang"=>$waktu_renang,
+                                "date_created"=>date("Y-m-d",strtotime($tgl_pelaksanaan)),
+                                "date_updated"=>date("Y-m-d H:i:s")
+                                );
+                        //print("<pre>".print_r($update_array,true)."</pre>");die();
+                        
+                        //print_r($update_array);die();
+                            $this->load->model("common_model");
+                            $this->common_model->data_update("tb_nilai",$update_array,array("id"=>$user_id)
+                                );
+                               echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/datanilai/tampil_nilai/'.$user_id.'";</script>
+                                ';
+                            $data["error"] =  "<script type='text/javascript'>
+                                                    swal('Sukses!', 'Data berhasil disimpan', 'success')
+                                            </script>";
+                        
+                }
+            }
+            
+            
+            $this->load->view("datanilai/edit_nilai",$data);
+        }
+    }
+
+
  
   
 }
