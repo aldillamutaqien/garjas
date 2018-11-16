@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
-                                 <a href="<?php echo site_url("dataadmin/add_admin/"); ?>"><i class="notika-icon notika-success"></i> Tambah</a>
+                                 
                                 
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="data-table-list">
                         <div class="basic-tb-hd">
-                            <h2>Data Nilai Garjas</h2>
+                            <h2>Data Penilaian Garjas</h2>
                         </div>
                         <div class="table-responsive">
                             <table id="data-table-basic" class="table table-striped">
@@ -69,9 +69,9 @@
                                             <td><?php echo date('d-m-Y',strtotime($users->tgl_pelaksanaan)); ?></td>
                                             
                                             <td>
-                                               
-                                                <a href="<?php echo site_url("datanilai/tampil_nilai/".$users->id_nilai); ?>">
-                                                <i title="Lihat Nilai" class="notika-icon notika-support btn" ></i></a>
+                        
+                                                <a href="<?php echo site_url("datanilai/tampil_nilai/".$users->id_nilai); ?>" class="btn btn-info info-icon-notika btn-reco-mg btn-button-mg waves-effect">
+                                                <i title="Lihat Nilai" class="notika-icon notika-search btn" ></i></a>
                                               
                                             </td>
                                         </tr>
