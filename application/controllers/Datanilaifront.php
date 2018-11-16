@@ -15,9 +15,13 @@ class Datanilaifront extends CI_Controller {
         if(_is_user_login($this)){
             $data = array();
             $this->load->model("datanilai_model");
-            //$this->load->model("personel_model");
+            $this->load->model("personel_model");
+            $id_user = _get_current_user_id($this);
 
-            $data["users"] = $this->datanilai_model->get_datanilai_filter_by_flag_del();
+            $data["personel"] = $this->personel_model->get_personel_by_id_user($id_user);
+
+
+            $data["users"] = $this->datanilai_model->get_datanilai_filter_by_flag_del_and_by_id_personel($data["personel"]->id);
             //print("<pre>".print_r($data["users"],true)."</pre>");die();
 
 
