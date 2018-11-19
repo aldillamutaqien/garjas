@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="#"><img src="img/logo/logo.png" alt="" /></a>
+                        <a href="#"><img src="<?php echo base_url($this->config->item("theme_admin")."/img/logo/logo.png"); ?>" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -19,22 +19,24 @@
                                         <a href="<?php echo site_url("front/change_password") ?>">
                                             <div class="hd-message-sn">
                                                 <div class="hd-message-img">
-                                                    <img src="img/post/1.jpg" alt="" />
+                                                    
+                                                    <i class="notika-icon notika-draft"></i>
+
                                                 </div>
                                                 <div class="hd-mg-ctn">
                                                     <h3>Ubah Password</h3>
-                                                    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="<?php echo site_url("admin/signout") ?>">
                                             <div class="hd-message-sn">
                                                 <div class="hd-message-img">
-                                                    <img src="img/post/2.jpg" alt="" />
+
+                                                    <i class="notika-icon notika-up-arrow"></i>
+
                                                 </div>
                                                 <div class="hd-mg-ctn">
                                                     <h3>Logout</h3>
-                                                    <p>Keluar dari system &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
                                                 </div>
                                             </div>
                                         </a>
