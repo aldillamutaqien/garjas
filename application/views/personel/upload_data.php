@@ -11,60 +11,55 @@
     <?php  $this->load->view("admin/common/common_header_menu"); ?>
     <!-- Main Menu area End-->
 
-
-        <!-- Data Table area Start-->
-    <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcomb-list">
-                       <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="notika-icon notika-form"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2>Download Format Excel</h2>
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                                <div class="breadcomb-report">
-                                    <a href="<?php echo base_url() ?>/theme/Personel.xlsx"><button data-toggle="tooltip" data-placement="left" title="Download Format" class="btn"><i class="notika-icon notika-sent"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
+      <div class="breadcomb-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="breadcomb-list">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="breadcomb-wp">
+                    <div class="breadcomb-icon">
+                      <i class="notika-icon notika-form"></i>
                     </div>
-                    <div class="data-table-list">
-                        <div class="basic-tb-hd">
-                            <h2>Upload Data Personel (Excel)</h2>
-                        </div>
-                         <div class="dropzone-area">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                       
-                                            
-                                           
-                                                <form method="POST" action="<?php echo site_url("personel/upload_data") ?>" enctype="multipart/form-data">
-                                                    <input type="file" name="file_upload"><br>
-                                                    <button class="btn btn-success btn-sm hec-save" type="submit" name="upload">  <i class="notika-icon notika-cloud"></i> Upload</button>
-                                                </form>
-                                            
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="breadcomb-ctn">
+                      <h2>Upload Data Personel</h2>
+                      <br/>
+                      <form method="POST" action="<?php echo site_url("personel/upload_data") ?>" enctype="multipart/form-data">
+                      <input type="file" name="file_upload"><br>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <button class="btn btn-success btn-sm hec-save" type="submit" name="upload">  <i class="notika-icon notika-cloud"></i> Upload</button>
+                      </form>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
                     </div>
+                  </div>
                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                  <div class="breadcomb-report">
+                      <p><span class="bread-ntd">Download Format Excel</span></p>
+                    <a href="<?php echo base_url() ?>/theme/Personel.xlsx"><button data-toggle="tooltip" data-placement="left" title="Download Format" class="btn"><i class="notika-icon notika-sent"></i></button></a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Data Table area End-->
+
 
     <!-- Start Footer area-->
     <?php  $this->load->view("admin/common/common_footer"); ?>
