@@ -34,31 +34,21 @@ class Datanilaifront extends CI_Controller {
   
 
     public function tampil_nilai($user_id){
-         $data = array();
+            $data = array();
             $this->load->model("datanilai_model");
 
             $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
-             //print("<pre>".print_r($nilai[0]->kelompok_umur,true)."</pre>");die();
-            $bmi = round( $this->get_bmi($nilai[0]->tinggi_badan,$nilai[0]->berat_badan),2);
+             //print("<pre>".print_r($nilai,true)."</pre>");die();
+            //$bmi = round( $this->get_bmi($nilai[0]->tinggi_badan,$nilai[0]->berat_badan),2);
             //print_r($bmi);die();
+            $bmi = $nilai[0]->nilai_bmi;
+            $kelas_postur = $nilai[0]->kelas;
+            $nilai_postur = $nilai[0]->nilai_postur;
+            $kategori = $nilai[0]->kategori;
             $data['bmi'] = $bmi;
-            $postur = $this->kelas_postur($bmi);
-            //print_r($postur);die();
-            $kelas_postur = $postur['kelas'];
-             $data['kelas_postur'] = $kelas_postur;
-            //print_r($kelas_postur);die();
-            $nilai_postur = $postur['nilai'];
-            
-           
-           
-            $data['nilai_postur'] = $nilai_postur;
-           
-            if($kelas_postur=="Luar Limit Atas" || $kelas_postur == "Limit Atas" || $kelas_postur == "Luar Limit Bawah" || $kelas_postur == "Limit Bawah"){
-                $kategori = "Tidak Memenuhi Sarat";
-            } else {
-                $kategori = "Memenuhi Sarat";
-            }
-             $data['kategori'] = $kategori;
+            $data['kelas_postur'] = $kelas_postur;
+            $data['nilai_postur'] = $nilai_postur;           
+            $data['kategori'] = $kategori;
 
             $kelompok_umur = $nilai[0]->kelompok_umur;
             //print_r($kelompok_umur);die();
@@ -68,32 +58,37 @@ class Datanilaifront extends CI_Controller {
             $push_up = $nilai[0]->push_up;
             $lari = $nilai[0]->lari;
             $shuttle_run = $nilai[0]->shuttle_run;
-            //print_r($shuttle_run);die();
+            $renang = $nilai[0]->renang;
+            //print_r($renang);die();
             $push_up = $nilai[0]->push_up;
             $shuttle_run = $nilai[0]->shuttle_run;
             //$cek_nilai = $this->cek_nilai_max($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run);
-            $nilai_total = $this->get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run);
+            $nilai_total = $this->get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run,$renang);
             $data['nilai_total'] = $nilai_total;
+            //print_r($data['nilai_total']);die();
             $nilai_b = ($nilai_total['pull_up']->nilai_pull_up + $nilai_total['sit_up']->nilai_sit_up + $nilai_total['push_up']->nilai_push_up+$nilai_total['shuttle_run']->nilai_shuttle_run) / 4;
             //print_r($nilai_total['sit_up']->nilai_sit_up);die();
-            $data['nilai_b'] = $nilai_b;
+            $nilai_renang = $nilai_total['renang']->nilai_renang;
+            //print_r($nilai_renang);
+            $data['nilai_b'] = round($nilai_b,2);
             $nilai_ab = ($nilai_b + $nilai_total['lari']->nilai_lari) / 2;
-            $data['nilai_ab']= $nilai_ab;
+            $data['nilai_ab']= round($nilai_ab,2);
             //print_r($nilai_ab);die();
             $data["nilai"] = $nilai;
-            $nilai_renang = 85;
-            $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur);
+            
+            $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_total['lari']->nilai_lari,$nilai_total['pull_up']->nilai_pull_up,$nilai_total['sit_up']->nilai_sit_up,$nilai_total['push_up']->nilai_push_up,$nilai_total['shuttle_run']->nilai_shuttle_run);
             // print_r($penilaian);die();
             // print_r($kategori.'<br>'.$nilai_ab.'<br>'.$nilai_total);die();
-            $data['jumlah_nilai'] = $penilaian['nilai_total'];
+            $data['jumlah_nilai'] = round($nilai[0]->nilai,2);
             $data['keterangan'] = $penilaian['keterangan'];
             $data['status'] = $penilaian['status'];
 
+
          
-            $this->load->view("datanilai/nilai",$data);
+            $this->load->view("datanilaifront/nilai",$data);
     }
 
-    function nilai_total($kategori,$nilai_garjas,$nilai_renang,$nilai_postur){
+    function nilai_total($kategori,$nilai_garjas,$nilai_renang,$nilai_postur,$pull_up,$sit_up,$push_up,$lari,$shuttle_run){
         $penilaian = array();
         if($kategori=="Memenuhi Sarat"){
             $penilaian['nilai_total'] = (($nilai_garjas * 90) / 100) + (($nilai_renang * 10) / 100);
@@ -102,10 +97,10 @@ class Datanilaifront extends CI_Controller {
              $penilaian['nilai_total'] = (($nilai_garjas * 80) / 100) + (($nilai_renang * 10) / 100) + (($nilai_postur * 10) / 100);
         }
 
-          if($penilaian['nilai_total']<70){
-                $penilaian['keterangan'] = "Tidak Lulus";
-            } else {
+          if($penilaian['nilai_total']>70 && $nilai_garjas > 70 && $lari>40 && $pull_up>40 && $sit_up > 40 && $push_up > 40 && $shuttle_run > 40){
                 $penilaian['keterangan'] = "Lulus";
+            } else  {
+                $penilaian['keterangan'] = "Tidak Lulus";
             }
 
             if($penilaian['nilai_total']>=81 && $penilaian['nilai_total']<=100 ){
@@ -160,21 +155,27 @@ class Datanilaifront extends CI_Controller {
         return $postur;
     }
 
-    function get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run){
+    function get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run,$renang){
         $nilai = array();
          $this->load->model("datanilai_model");
          if($jenis_kelamin=="Pria"){
             $tabel = "nilai_b_pria";
             $tabel_lari = "lari_pria";
-         } else { $tabel ="nilai_b_wanita";  $tabel_lari = "lari_wanita";}
+            $tabel_renang = "ren_mil_das_pria";
+         } else { 
+            $tabel ="nilai_b_wanita";  
+            $tabel_lari = "lari_wanita"; 
+            $tabel_renang = "ren_mil_das_wan";}
 
          $nilai["pull_up"] = $this->datanilai_model->get_nilai_pull_up_by_id($tabel,$kelompok_umur,$pull_up);
          $nilai["sit_up"] = $this->datanilai_model->get_nilai_sit_up_by_id($tabel,$kelompok_umur,$sit_up);
          $nilai["push_up"] = $this->datanilai_model->get_nilai_push_up_by_id($tabel,$kelompok_umur,$push_up);
          $nilai["lari"] = $this->datanilai_model->get_nilai_lari_by_id($tabel_lari,$kelompok_umur,$lari);
          $nilai["shuttle_run"] = $this->datanilai_model->get_nilai_shuttle_run_by_id($tabel,$kelompok_umur,$shuttle_run);
+         $nilai["renang"] = $this->datanilai_model->get_nilai_renang_by_id($tabel_renang,$kelompok_umur,$renang);
          return $nilai;
     }
+
 
     function get_bmi($tinggi,$berat){
         $bmi = $berat / (($tinggi/100)*($tinggi/100));

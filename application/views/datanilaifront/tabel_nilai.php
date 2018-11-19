@@ -74,7 +74,7 @@
                                             
                                             <td>
                                                
-                                                <a href="<?php echo site_url("datanilai/tampil_nilai/".$users->id_nilai); ?>" class="btn btn-info info-icon-notika btn-reco-mg btn-button-mg waves-effect">
+                                                <a href="<?php echo site_url("datanilaifront/tampil_nilai/".$users->id_nilai); ?>" class="btn btn-info info-icon-notika btn-reco-mg btn-button-mg waves-effect">
                                                 <i title="Lihat Nilai" class="notika-icon notika-search btn" ></i></a>
                                               
                                             </td>
