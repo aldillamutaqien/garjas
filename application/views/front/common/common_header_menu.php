@@ -5,7 +5,7 @@
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li class="active"><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Home</a>
                         </li>
-                        <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personil</a>
+                        <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personel</a>
                         </li>
                         <li><a data-toggle="tab" href="#datanilai"><i class="notika-icon notika-edit"></i> Data Nilai</a>
                         </li>
