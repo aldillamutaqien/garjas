@@ -7,7 +7,7 @@
                         </li>
                         <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Pengguna</a>
                         </li>
-                        <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personil</a>
+                        <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personel</a>
                         </li>
                         <li><a data-toggle="tab" href="#dataadmin"><i class="notika-icon notika-support"></i> Data Admin</a>
                         </li>

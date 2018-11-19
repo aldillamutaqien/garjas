@@ -113,6 +113,25 @@ class Admin extends CI_Controller {
     public function dashboard(){
         if(_is_user_login($this)){
             $data = array();
+
+            $this->load->model("users_model");
+            $this->load->model("personel_model");
+            $this->load->model("dataadmin_model");
+            $this->load->model("datanilai_model");
+
+            $data["pengguna"] = $this->users_model->get_users();
+            $data["personel"] = $this->personel_model->get_personel_filter_by_flag_del();
+            $data["dataadmin"] = $this->dataadmin_model->get_dataadmin_filter_by_flag_del();
+            $data["datanilai"] = $this->datanilai_model->get_datanilai_filter_by_flag_del();
+
+            
+
+            $data['count_pengguna'] = count($data["pengguna"]);
+            $data['count_personel'] = count($data["personel"]);
+            $data['count_dataadmin'] = count($data["dataadmin"]);
+            $data['count_datanilai'] = count($data["datanilai"]);
+
+
             $this->load->view("admin/dashboard",$data);
         }
     }

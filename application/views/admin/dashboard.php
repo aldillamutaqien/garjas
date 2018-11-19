@@ -2,6 +2,8 @@
 <html class="no-js" lang="">
 
 <?php  $this->load->view("common/common_head"); ?>
+  <link rel="stylesheet" href="<?php echo base_url($this->config->item("theme_admin")."/js/fullcalendar/fullcalendar.min.css"); ?>"> 
+
 
 <body>
 
@@ -20,8 +22,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter">50,000</span></h2>
-                            <p>Total Website Traffics</p>
+                            <h2><span class="counter"><?php echo $count_pengguna;?></span></h2>
+                            <p>Total Pengguna</p>
                         </div>
                         <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
                     </div>
@@ -29,8 +31,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter">90,000</span>k</h2>
-                            <p>Website Impressions</p>
+                            <h2><span class="counter"><?php echo $count_personel;?></span></h2>
+                            <p>Total Data Personel</p>
                         </div>
                         <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
                     </div>
@@ -38,8 +40,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2>$<span class="counter">40,000</span></h2>
-                            <p>Total Online Sales</p>
+                            <h2><span class="counter"><?php echo $count_dataadmin;?></span></h2>
+                            <p>Total Admin</p>
                         </div>
                         <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
                     </div>
@@ -47,8 +49,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter">1,000</span></h2>
-                            <p>Total Support Tickets</p>
+                            <h2><span class="counter"><?php echo $count_datanilai;?></span></h2>
+                            <p>Total Penilaian Garjas</p>
                         </div>
                         <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
                     </div>
@@ -65,11 +67,12 @@
                     <div class="sale-statistic-inner notika-shadow mg-tb-30">
                         <div class="curved-inner-pro">
                             <div class="curved-ctn">
-                                <h2>Tabel Statistik</h2>
-                                <p>Berikut adalah Hasil Grafik Jasmani</p>
+                                <h2>Kalender</h2>
+                                <p>..............................</p>
                             </div>
                         </div>
-                        <div id="curved-line-chart" class="flot-chart-sts flot-chart"></div>
+                        <!-- <div id="curved-line-chart" class="flot-chart-sts flot-chart"></div> -->
+                        <div id="calendar"></div> 
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
@@ -119,6 +122,9 @@
     <!-- jquery
         ============================================ -->
    <?php  $this->load->view("common/common_foot"); ?>
+       <script src="<?php echo base_url($this->config->item("theme_admin")."/js/fullcalendar/moment.min.js"); ?>"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/js/fullcalendar/fullcalendar.min.js"); ?>"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/js/fullcalendar/calendar.js"); ?>"></script>
 </body>
 
 </html>
