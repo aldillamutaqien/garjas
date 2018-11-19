@@ -128,6 +128,123 @@ class Personel extends CI_Controller {
             $this->load->view("personel/add_personel",$data);
         }
     }
+
+
+    public function upload_data(){
+        if(_is_user_login($this)){
+
+             $this->load->view("personel/upload_data");
+        }
+
+        if(isset($_POST['upload'])){
+             if($_FILES["file_upload"]["size"]>0){
+                // print_r($_FILES);
+              $filepath = "uploads/".$_FILES["file_upload"]["name"];
+              $res = move_uploaded_file($_FILES["file_upload"]["tmp_name"],$filepath);
+            
+              //print_r($res);die();
+              if($res){
+                ini_set('display_errors', TRUE);
+                    ini_set('display_startup_errors', TRUE);
+                    
+                    define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+                    
+                    date_default_timezone_set('Asia/Jakarta');
+                      $date = date("Y-m-d H:i:s");
+                    /** Include PHPExcel_IOFactory */
+                    //require_once  'libraries/PHPExcel/IOFactory.php';
+                    $this->load->library('PHPExcel');
+                     if (!file_exists($filepath)) {
+                        
+                        exit("Please run 05featuredemo.php first." . EOL);
+                    }
+                     try {
+                        $inputFileType = PHPExcel_IOFactory::identify($filepath);
+                        $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                        $objPHPExcel = $objReader->load($filepath);
+                    } catch(Exception $e) {
+                        die('Error loading file "'.pathinfo($filepath,PATHINFO_BASENAME).'": '.$e->getMessage());
+                    }
+                    $sheet = $objPHPExcel->getSheet(0); 
+                    $highestRow = $sheet->getHighestRow(); 
+                    $highestColumn = $sheet->getHighestColumn();
+                    // print_r($sheet.'<br>'. $highestRow.'<br>'.$highestColumn);die();
+                    $sql_user = "INSERT into users (user_name,user_password,user_type_id,user_status,on_date,date_created,flag_del) VALUES";
+                    $sql_org = "Insert into personel (id_user,nama, pangkat, korps, nrp, jenis_kelamin, tanggal_lahir, kesatuan, jabatan, matra,date_created,flag_del) VALUES";
+                    $sql_users = $sql_user;
+                    $sql = $sql_org;
+
+                        for ($row = 2; $row <= $highestRow; $row++){ 
+                        //  Read a row of data into an array
+                        $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+                                                        NULL,
+                                                        TRUE,
+                                                        FALSE);
+                        //  Insert row data array into your database of choice here
+                        
+                        
+                        $rows = $rowData[0];
+                        
+                       $this->db->select();
+                       $this->db->from('personel');
+                       $this->db->where('nrp',$rows[3]);
+                        $this->db->where('nama',$rows[1]);
+                       $q = $this->db->get();
+                        $record_found =  $q->row();
+                       // print_r('hasil'.$record_found);die();
+                        
+                        if(!empty($record_found))
+                        {
+                            
+                            $data = array(
+                                   'username' => $rows[1],
+                                   'user_password' => $rows[4]."!"
+                                );
+
+                            $this->db->where('attendence_id', $record_found->attendence_id);
+                            $this->db->update('attendence', $data); 
+
+                            
+                        }
+                        else
+                        {//ON DUPLICATE KEY UPDATE attended='".$row[1]."',attendence_reason='".$row[2]."'
+
+                            $sql_users .=" ('".$rows[3]."','".$rows[3]."!','1','1','".$date."','".$date."','0') ";
+                            if($row<$highestRow){
+                                $sql .=",";     
+                           }
+                          // print_r($sql_users);
+                           $this->db->query($sql_users);
+                           $this->db->select('user_id');
+                           $this->db->from('users');
+                           $this->db->where('user_name',$rows[3]); 
+                            $q = $this->db->get();
+                            $user = $q->result();
+                           // print_r($user);print_r($rows[5]);
+                            $sql .=" ('".$user[0]->user_id."','".$rows[0]."','".$rows[1]."','".$rows[2]."','".$rows[3]."','".$rows[4]."','".$rows[5]."','".$rows[6]."','".$rows[7]."','".$rows[8]."','".$date."','0') ";
+                            if($row<$highestRow){
+                                $sql .=",";     
+                           }
+
+                           //print_r($sql);die();      
+                        
+                       }
+                        
+                     
+                 // redirect('attendence/add_attendence'); 
+                    }
+                    if($sql!=$sql_org){
+                      $this->db->query($sql);   
+                       echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/personel/";</script>
+                                ';
+                    }
+
+              }
+             }
+            
+        }
+
+    }
     // public function edit_user($user_id){
     //     if(_is_user_login($this)){
     //         $data = array();

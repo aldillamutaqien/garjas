@@ -169,7 +169,9 @@
                                                     <div class="invoice-hs">
                                                     <?php } ?>
                                                  
-                                                    <span>Nilai B = <?php echo $nilai_b; ?><br>Nilai A+B = <?php echo $nilai_ab; ?></span>
+                                                    <span>Nilai B = <?php echo $nilai_b; ?>
+                                                        <br>Nilai A+B = <?php echo $nilai_ab; ?>
+                                                        <br>Nilai (A+B) + Renang = <?php echo $nilai_ab; ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

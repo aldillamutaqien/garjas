@@ -121,7 +121,7 @@
                         </div>
                         <div id="datapersonil" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="#">Upload Data</a>
+                                <li><a href="<?php echo site_url("personel/upload_data") ?>">Upload Data</a>
                                 </li>
                                  <li><a href="<?php echo site_url("personel/index") ?>">Lihat Data</a>
                                 </li>
