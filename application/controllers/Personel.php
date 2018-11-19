@@ -211,7 +211,7 @@ class Personel extends CI_Controller {
                         else
                         {//ON DUPLICATE KEY UPDATE attended='".$row[1]."',attendence_reason='".$row[2]."'
 
-                            $sql_users .=" ('".$rows[3]."','".md5($rows[3]."!".)."','1','1','".$date."','".$date."','0') ";
+                            $sql_users .=" ('".$rows[3]."','".md5($rows[3]."!")."','1','1','".$date."','".$date."','0') ";
                             if($row<$highestRow){
                                 $sql .=",";     
                            }
