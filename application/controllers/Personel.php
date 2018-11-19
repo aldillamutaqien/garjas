@@ -188,28 +188,30 @@ class Personel extends CI_Controller {
                        $this->db->select();
                        $this->db->from('personel');
                        $this->db->where('nrp',$rows[3]);
-                        $this->db->where('nama',$rows[1]);
                        $q = $this->db->get();
                         $record_found =  $q->row();
-                       // print_r('hasil'.$record_found);die();
+                       //print_r($record_found->nrp);die();
                         
                         if(!empty($record_found))
                         {
                             
                             $data = array(
-                                   'username' => $rows[1],
-                                   'user_password' => $rows[4]."!"
+                                   'pangkat' => $rows[1],
+                                   'korps' =>$row[2],
+                                   'kesatuan' => $rows[6],
+                                   'jabatan' => $rows[7]
                                 );
-
-                            $this->db->where('attendence_id', $record_found->attendence_id);
-                            $this->db->update('attendence', $data); 
-
+                           //print_r($data);die();
+                            $this->db->where('id', $record_found->id);
+                            $this->db->update('personel', $data); 
+                             echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/personel/";</script>
+                                ';
                             
                         }
                         else
                         {//ON DUPLICATE KEY UPDATE attended='".$row[1]."',attendence_reason='".$row[2]."'
 
-                            $sql_users .=" ('".$rows[3]."','".$rows[3]."!','1','1','".$date."','".$date."','0') ";
+                            $sql_users .=" ('".$rows[3]."','".md5($rows[3]."!".)."','1','1','".$date."','".$date."','0') ";
                             if($row<$highestRow){
                                 $sql .=",";     
                            }
