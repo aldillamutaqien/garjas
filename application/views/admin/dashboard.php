@@ -67,7 +67,7 @@
     <div class="sale-statistic-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="sale-statistic-inner notika-shadow mg-tb-30">
                         <div class="curved-inner-pro">
                             <div class="curved-ctn">
@@ -79,7 +79,7 @@
                         <div id="calendar"></div> 
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+<!--                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
                     <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
                         <div class="past-day-statis">
                             <h2>Tingkat Kebugaran</h2>
@@ -89,7 +89,7 @@
                         <div class="past-statistic-an">
                             <div class="past-statistic-ctn">
                                 <h3><span class="counter">3,20,000</span></h3>
-                                <p>Page Views</p>
+                                <p>----</p>
                             </div>
                             <div class="past-statistic-graph">
                                 <div class="stats-bar"></div>
@@ -98,7 +98,7 @@
                         <div class="past-statistic-an">
                             <div class="past-statistic-ctn">
                                 <h3><span class="counter">1,03,000</span></h3>
-                                <p>Total Clicks</p>
+                                <p>----</p>
                             </div>
                             <div class="past-statistic-graph">
                                 <div class="stats-line"></div>
@@ -107,14 +107,14 @@
                         <div class="past-statistic-an">
                             <div class="past-statistic-ctn">
                                 <h3><span class="counter">24,00,000</span></h3>
-                                <p>Site Visitors</p>
+                                <p>----</p>
                             </div>
                             <div class="past-statistic-graph">
                                 <div class="stats-bar-2"></div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

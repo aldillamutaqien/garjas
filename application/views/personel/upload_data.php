@@ -50,7 +50,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                   <div class="breadcomb-report">
                       <p><span class="bread-ntd">Download Format Excel</span></p>
-                    <a href="<?php echo base_url() ?>/theme/Personel.xlsx"><button data-toggle="tooltip" data-placement="left" title="Download Format" class="btn"><i class="notika-icon notika-sent"></i></button></a>
+                    <a href="<?php echo base_url() ?>/file/Personel.xlsx"><button data-toggle="tooltip" data-placement="left" title="Download Format" class="btn"><i class="notika-icon notika-sent"></i></button></a>
                   </div>
                 </div>
               </div>
