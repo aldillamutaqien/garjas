@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php  $this->load->view("common/common_head_data_table"); ?> 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+    <?php  $this->load->view("common/common_head_data_table"); ?> 
+
     <body>
     <?php  $this->load->view("admin/common/common_header_top"); ?>
     <!-- End Header Top Area -->
@@ -139,7 +140,7 @@
           "buttons": [{
                           extend: 'excel',
                           className: 'fa fa-download',
-                          messageTop: 'Data Master Siswa',
+                          messageTop: 'Data Personel',
                           text: '  Unduh Excel',
                           exportOptions: {
                               modifier: {
@@ -152,6 +153,7 @@
                       {
                             extend: 'print',
                             className: 'fa fa-print',
+                            messageTop: 'Data Personel',
                             text: '  Print',
                             exportOptions: {
                                 modifier: {
