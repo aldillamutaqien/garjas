@@ -127,8 +127,6 @@
                                 </li>
                                 <li><a href="<?php echo site_url("personel/add_personel") ?>">Tambah Data</a>
                                 </li>
-                                <li><a href="#">Export Excell</a>
-                                </li>
                             </ul>
                         </div>
                         <div id="dataadmin" class="tab-pane notika-tab-menu-bg animated flipInX">

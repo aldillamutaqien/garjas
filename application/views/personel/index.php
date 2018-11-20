@@ -46,26 +46,34 @@
                             <table id="tablepersonel" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>NRP</th>
+                                        <th>No</th>
                                         <th>Nama</th>
-                                        <th>Pangkat/Korps</th>
-                                        <th>Jabatan & Kesatuan</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Pangkat</th>
+                                        <th>Korp</th>
+                                        <th>NRP</th>
+                                        <th>Jabatan</th>
+                                        <th>Kesatuan</th>
                                         <th>Matra</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    <?php $no=1; ?>
                                     <?php foreach($users as $users){?>
                                         <tr>
-                                            <td><?php echo $users->id; ?></td>
-                                            <td><?php echo $users->nama; ?><br><?php echo $users->pangkat; ?> / <?php echo $users->nrp; ?></td>
+                                            <td><?php echo $no++; ?></td>
+                                            <td><?php echo $users->nama; ?></td>
                                             <td><?php echo $users->jenis_kelamin; ?></td>
                                             <td><?php echo date('d-m-Y',strtotime($users->tanggal_lahir)); ?></td>
-                                            <td><?php echo $users->kesatuan; ?> / <?php echo $users->matra; ?></td>
-                                            <td><?php echo $users->jabatan; ?> </td>
-                                            
+                                            <td><?php echo $users->pangkat; ?></td>
+                                            <td><?php echo $users->korps; ?></td>
+                                            <td><?php echo $users->nrp; ?></td>
+                                            <td><?php echo $users->jabatan; ?></td>
+                                            <td><?php echo $users->kesatuan; ?></td>
+                                            <td><?php echo $users->matra; ?></td>                                      
                                             <td>
                                                 <a href="<?php echo site_url("personel/edit_personel/".$users->id); ?>">
                                                 <i title="Edit" class="notika-icon notika-draft"></i></a>
@@ -79,11 +87,15 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <th>ID</th>
-                                        <th>NRP</th>
+                                        <th>No</th>
                                         <th>Nama</th>
-                                        <th>Pangkat/Korps</th>
-                                        <th>Jabatan & Kesatuan</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Pangkat</th>
+                                        <th>Korp</th>
+                                        <th>NRP</th>
+                                        <th>Jabatan</th>
+                                        <th>Kesatuan</th>
                                         <th>Matra</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -133,6 +145,7 @@
                               modifier: {
                                   page: 'current'
                               },
+                            columns: [0,1,2,3,4,5,6,7,8,9]
                              
                           }
                       },
@@ -144,13 +157,13 @@
                                 modifier: {
                                     page: 'current'
                                 },
-                                
+                            columns: [0,1,2,3,4,5,6,7,8,9]
                             }
 
                       }],
           "columnDefs": [
                   {
-                      "targets": [ 0],
+                      "targets": [2,3,7,9],
                       "visible": false,
                       "searchable": false
                   },
