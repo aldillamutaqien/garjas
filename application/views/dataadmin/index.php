@@ -44,7 +44,7 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>Kesatuan</th>
                                         <th>Jabatan</th>
@@ -53,10 +53,10 @@
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody> <?php $no=1?>
                                         <?php foreach($users as $users){?>
                                         <tr>
-                                            <td><?php echo $users->id; ?></td>
+                                            <td><?php echo $no++; ?></td>
                                             <td><?php echo $users->nama; ?><br><?php echo $users->pangkat; ?> / <?php echo $users->nrp; ?></td>
                                             <td><?php echo $users->kesatuan; ?> / <?php echo $users->matra; ?></td>
                                             <td><?php echo $users->jabatan; ?> </td>
@@ -75,7 +75,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <th>ID</th>
+                                       <th>No</th>
                                        <th>Nama</th>
                                        <th>Kesatuan</th>
                                        <th>Jabatan</th>
