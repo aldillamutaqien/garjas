@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php  $this->load->view("common/common_head_data_table"); ?> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
     <body>
     <?php  $this->load->view("admin/common/common_header_top"); ?>
     <!-- End Header Top Area -->
@@ -41,7 +43,7 @@
                             <h2>Daftar Personel</h2>
                         </div>
                         <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                            <table id="tablepersonel" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -101,28 +103,62 @@
     <!-- jquery-->
    <?php  $this->load->view("common/common_foot_data_table"); ?>
 
+  <!--    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+
+     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> 
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
     <script>
-        $(function () {
-          
-          $("body").on("change",".tgl_checkbox",function(){
-              var table = $(this).data("table");
-              var status = $(this).data("status");
-              var id = $(this).data("id");
-              var id_field = $(this).data("idfield");
-              var bin=0;
-              if($(this).is(':checked')){
-                  bin = 1;
-              }
-              $.ajax({
-                method: "POST",
-                url: "<?php echo site_url("admin/change_status"); ?>",
-                data: { table: table, status: status, id : id, id_field : id_field, on_off : bin }
-              })
-                .done(function( msg ) {
-                  //alert(msg);
-                }); 
-          });
+        $(function (){$('#tablepersonel').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "order": [[ 0, "desc" ]],
+          "info": true,
+          "autoWidth": false,
+          "dom": 'Bfrtip',
+          "buttons": [{
+                          extend: 'excel',
+                          className: 'fa fa-download',
+                          messageTop: 'Data Master Siswa',
+                          text: '  Unduh Excel',
+                          exportOptions: {
+                              modifier: {
+                                  page: 'current'
+                              },
+                             
+                          }
+                      },
+                      {
+                            extend: 'print',
+                            className: 'fa fa-print',
+                            text: '  Print',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'current'
+                                },
+                                
+                            }
+
+                      }],
+          "columnDefs": [
+                  {
+                      "targets": [ 0],
+                      "visible": false,
+                      "searchable": false
+                  },
+              ]
+         });
         });
+         
+
        </script>
 
         
