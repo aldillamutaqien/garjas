@@ -19,22 +19,24 @@
                                         <a href="<?php echo site_url("users/change_password") ?>">
                                             <div class="hd-message-sn">
                                                 <div class="hd-message-img">
-                                                    <img src="img/post/1.jpg" alt="" />
+                                                    
+                                                    <i class="notika-icon notika-draft"></i>
+
                                                 </div>
                                                 <div class="hd-mg-ctn">
                                                     <h3>Ubah Password</h3>
-                                                    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="<?php echo site_url("admin/signout") ?>">
                                             <div class="hd-message-sn">
                                                 <div class="hd-message-img">
-                                                    <img src="img/post/2.jpg" alt="" />
+
+                                                    <i class="notika-icon notika-up-arrow"></i>
+
                                                 </div>
                                                 <div class="hd-mg-ctn">
                                                     <h3>Logout</h3>
-                                                    <p>Keluar dari system &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
                                                 </div>
                                             </div>
                                         </a>
