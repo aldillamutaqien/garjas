@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
     <?php  $this->load->view("common/common_head_data_table"); ?> 
+
     <body>
     <?php  $this->load->view("admin/common/common_header_top"); ?>
     <!-- End Header Top Area -->
@@ -41,31 +44,39 @@
                             <h2>Data Penilaian Garjas</h2>
                         </div>
                         <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                            <table id="tablegarjas" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Tgl.Lahir</th>
-                                        <th>Kesatuan</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Pangkat</th>
+                                        <th>Korp</th>
+                                        <th>NRP</th>
                                         <th>Jabatan</th>
+                                        <th>Kesatuan</th>
+                                        <th>Matra</th>
                                         <th>Tgl.Pelaksanaan</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody>                                  
                                         <?php $no = 1;
                                         foreach($users as $users){
                                             ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $users->nama; ?><br><?php echo $users->pangkat; ?> / <?php echo $users->nrp; ?></td>
+                                            <td><?php echo $users->nama; ?></td>
                                             <td><?php echo $users->jenis_kelamin; ?></td>
                                             <td><?php echo date('d-m-Y',strtotime($users->tanggal_lahir)); ?></td>
-                                            <td><?php echo $users->kesatuan; ?> / <?php echo $users->matra; ?></td>
+                                            <td><?php echo $users->pangkat; ?></td>
+                                            <td><?php echo $users->korps; ?></td>
+                                            <td><?php echo $users->nrp; ?></td>
                                             <td><?php echo $users->jabatan; ?> </td>
+                                            <td><?php echo $users->kesatuan; ?></td>
+                                            <td><?php echo $users->matra; ?></td>
                                             <td><?php echo date('d-m-Y',strtotime($users->tgl_pelaksanaan)); ?></td>
                                             
                                             <td>
@@ -79,14 +90,18 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <th>No</th>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Tgl.Lahir</th>
-                                        <th>Kesatuan</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Pangkat</th>
+                                        <th>Korp</th>
+                                        <th>NRP</th>
                                         <th>Jabatan</th>
+                                        <th>Kesatuan</th>
+                                        <th>Matra</th>
                                         <th>Tgl.Pelaksanaan</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -104,29 +119,66 @@
     <!-- jquery-->
    <?php  $this->load->view("common/common_foot_data_table"); ?>
 
-    <script>
-        $(function () {
-          
-          $("body").on("change",".tgl_checkbox",function(){
-              var table = $(this).data("table");
-              var status = $(this).data("status");
-              var id = $(this).data("id");
-              var id_field = $(this).data("idfield");
-              var bin=0;
-              if($(this).is(':checked')){
-                  bin = 1;
-              }
-              $.ajax({
-                method: "POST",
-                url: "<?php echo site_url("admin/change_status"); ?>",
-                data: { table: table, status: status, id : id, id_field : id_field, on_off : bin }
-              })
-                .done(function( msg ) {
-                  //alert(msg);
-                }); 
-          });
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> 
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+   <script>
+        $(function (){$('#tablegarjas').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "order": [[ 0, "desc" ]],
+          "info": true,
+          "autoWidth": false,
+          "dom": 'Bfrtip',
+          "buttons": [{
+                          extend: 'excel',
+                          className: 'fa fa-download',
+                          messageTop: 'Data Penilaian Garjas',
+                          text: '  Unduh Excel',
+                          exportOptions: {
+                              modifier: {
+                                  page: 'current'
+                              },
+                              columns: [0,1,2,3,4,5,6,7,8,9,10]
+                            
+                             
+                          }
+                      },
+                      {
+                            extend: 'print',
+                            className: 'fa fa-print',
+                            messageTop: 'Data Penilaian Garjas',
+                            text: '  Print',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'current'
+                                },
+                               columns: [0,1,2,3,4,5,6,7,8,9,10]
+                            
+                            }
+
+                      }],
+          "columnDefs": [
+                  {
+                      "targets": [6,7,9],
+                      "visible": false,
+                      "searchable": false
+                  },
+              ]
+         });
         });
+         
+
        </script>
+
 
         
     </body>
