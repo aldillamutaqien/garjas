@@ -85,5 +85,17 @@ if(! function_exists('_get_user_redirect')){
                             {
                                 return "front/dashboard";
                             }
+                            else if(_get_current_user_type_id($thi)==2)
+                            {
+                                return "satker/dashboard";
+                            }
+                            else if(_get_current_user_type_id($thi)==3)
+                            {
+                                return "kotama/dashboard";
+                            }
+                            else if(_get_current_user_type_id($thi)==4)
+                            {
+                                return "mabes/dashboard";
+                            }
     }
 }
