@@ -27,6 +27,18 @@ class Personel_model extends CI_Model{
         return $q->row();
     }
 
+    function get_kotama(){
+    $hasil=$this->db->query("SELECT * FROM kotama ORDER BY id_kotama ASC ");
+    return $hasil;
+    }
+
+    function get_satker(){
+        $hasil=$this->db->query("SELECT * FROM satker");
+        return $hasil;
+    }
+
+    
+
 
 }
 ?>

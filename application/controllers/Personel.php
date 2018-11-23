@@ -14,6 +14,7 @@ class Personel extends CI_Controller {
 		if(_is_user_login($this)){
             $data = array();
             $this->load->model("personel_model");
+
             $data["users"] = $this->personel_model->get_personel_filter_by_flag_del();
             $this->load->view("personel/index",$data);
         }
@@ -33,7 +34,7 @@ class Personel extends CI_Controller {
                 $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'trim|required');
                 $this->form_validation->set_rules('matra', 'Matra', 'trim|required');
                 $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
-                $this->form_validation->set_rules('kesatuan', 'Kesatuan', 'trim|required');
+               
                 $this->form_validation->set_rules('id_user', 'Id User', 'trim|required');
                 if ($this->form_validation->run() == FALSE) 
         		{
@@ -60,7 +61,8 @@ class Personel extends CI_Controller {
 
                     
         		}else
-                {
+                {       $this->load->model("satker_model");
+                        $this->load->model("kotama_model");
                         
                         $nama = $this->input->post("nama");
                         
@@ -79,24 +81,39 @@ class Personel extends CI_Controller {
 
                         $jabatan = $this->input->post("jabatan");
                         
-                        $kesatuan = $this->input->post("kesatuan");
+                        $id_satker = $this->input->post("satker");
+
+                        $kesatuan = $this->satker_model->get_satker_by_id($id_satker)->result();
+                        
+                        $satker = $kesatuan[0]->nama_satker;
+
+                        $id_kotama = $this->input->post("kotama");
+
+                        $kotama = $this->kotama_model->get_kotama_by_id($id_kotama)->result();
+
+                        $nama_kotama = $kotama[0]->nama_kotama;
+
+                         //print_r($nama_kotama);die();
                         
                         $id_user = $this->input->post("id_user");
                         //$tgl_lahir = date("Y-m-d",strtotime($tanggal_lahir));
                         //print_r($tgl_lahir);die();
-                        // $array = array(
-                        //         "nama"=>$nama,
-                        //         "pangkat"=>$pangkat,
-                        //         "korps"=>$korps,
-                        //         "jenis_kelamin"=>$jenis_kelamin,
-                        //         "tanggal_lahir"=>$tanggal_lahir,
-                        //         "matra"=>$matra,
-                        //         "jabatan"=>$jabatan,
-                        //         "kesatuan"=>$kesatuan,
-                        //         "id_user"=>$id_user,
-                        //         "date_created"=>date("Y-m-d H:i:sa"),
-                        //         "flag_del"=>0);
-                        // print_r($array);die();
+                        $array = array(
+                                "nama"=>$nama,
+                                "pangkat"=>$pangkat,
+                                "korps"=>$korps,
+                                "jenis_kelamin"=>$jenis_kelamin,
+                                "tanggal_lahir"=>date('Y-m-d', strtotime($tanggal_lahir)),
+                                "matra"=>$matra,
+                                "jabatan"=>$jabatan,
+                                "id_satker"=>$id_satker,
+                                "kesatuan"=>$satker,
+                                "id_kotama"=>$id_kotama,
+                                "nama_kotama"=>$nama_kotama,
+                                "id_user"=>$id_user,
+                                "date_created"=>date("Y-m-d H:i:sa"),
+                                "flag_del"=>0);
+                        //print_r($array);die();
                         
                             $this->load->model("common_model");
                             $this->common_model->data_insert("personel",
@@ -109,7 +126,10 @@ class Personel extends CI_Controller {
                                 "tanggal_lahir"=>date("Y-m-d",strtotime($tanggal_lahir)),
                                 "matra"=>$matra,
                                 "jabatan"=>$jabatan,
-                                "kesatuan"=>$kesatuan,
+                                "id_satker"=>$id_satker,
+                                "kesatuan"=>$satker,
+                                "id_kotama"=>$id_kotama,
+                                "nama_kotama"=>$nama_kotama,
                                 "id_user"=>$id_user,
                                 "date_created"=>date("Y-m-d H:i:sa"),
                                 "flag_del"=>0));
@@ -123,11 +143,16 @@ class Personel extends CI_Controller {
                         
                 }
             }
-            
+            $data["kotama"] = $this->personel_model->get_kotama();
+             $data["satker"] = $this->personel_model->get_satker();
+            //print_r($data["kotama"]);die();
             $data["user"] = $this->personel_model->get_user()->result();
             $this->load->view("personel/add_personel",$data);
         }
     }
+
+
+   
 
 
     public function upload_data(){

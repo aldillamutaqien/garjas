@@ -53,6 +53,7 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/vendor/modernizr-2.8.3.min.js"); ?>"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>images/login.css" type="text/css" />
 </head>
 
 <body>
@@ -62,13 +63,19 @@
     <!-- Login Register area Start-->
     
 
-    <div class="login-content">
+   <!--  <div class="login-content"> -->
+        <div class="vid-container">
+  <video id="Video1" class="bgvid back" autoplay="true" muted="muted" preload="auto" loop>
+      <source src="<?php echo base_url();?>images/garjas.mp4" type="video/mp4">
+    </video>
+
         <!-- Login -->
-        <div class="nk-block toggled" id="l-login">
+        <center>
+        <div class="nk-block toggled" id="l-login" >
+           
           <form method="post" action="#">      
-            <div class="nk-form">
-                <h4>Garjas </h4>
-                Physical Fitness Test Information System
+            <div class="nk-form" style="background-image: url(<?php echo base_url();  ?>images/jas.jpg);width: 100%;height: auto;margin-top: 150px">
+                <h4>Sis Test Garjas Seldik</h4>
                 <br>
                 <br>
                 <br>
@@ -89,12 +96,13 @@
                 
             </div>
         </form>
-
+        
         </div>
-
-  
+        </center>
 
     </div>
+
+  <!--   </div> -->
     <!-- Login Register area End-->
     <!-- jquery
 		============================================ -->
@@ -169,6 +177,8 @@
 		============================================ -->
 
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/main.js"); ?>"></script>
+
+    <script src="<?php echo base_url();?>images/login.js"></script>
 
     
 </body>

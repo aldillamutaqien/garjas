@@ -145,21 +145,6 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                        <label class="hrzn-fm">Kesatuan</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm" placeholder="Kesatuan" name="kesatuan">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="form-example-int form-horizental">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                                         <label class="hrzn-fm">Jabatan</label>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
@@ -170,6 +155,52 @@
                                 </div>
                             </div>
                         </div>
+
+                         <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Satker</label>
+                                    </div>
+                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                          <select name="satker" class="selectpicker" data-live-search="true">
+                                            <option value="0">--Pilih Satker--</option>
+                                            <?php 
+                                                foreach ($satker->result() as $data) {
+                                                ?>
+                                                <option value='<?php echo $data->id_satker ?>'><?php echo $data->nama_satker ?></option>
+                                                <?php } ?>
+                                          </select>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                          <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Kotama</label>
+                                    </div>
+                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                          <select name="kotama" class="selectpicker" data-live-search="true" >
+                                            <option value="0">--Pilih Kotama--</option>
+                                            <?php 
+                                                foreach ($kotama->result() as $data) {
+                                                ?>
+                                                <option value='<?php echo $data->id_kotama ?>'><?php echo $data->nama_kotama ?></option>
+                                                <?php } ?>
+                                          </select>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
 
 
                         <div class="form-example-int form-horizental">
@@ -259,6 +290,8 @@
           });
         });
        </script>
+
+
 
         
     </body>
