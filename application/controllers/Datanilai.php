@@ -98,6 +98,7 @@ class Datanilai extends CI_Controller {
                         $pok_umur = $this->input->post("kelompok_umur");
                         $jenis_kelamin = $this->input->post("jenis_kelamin");
                         $berat_badan = $this->input->post("berat_badan");
+                        $nama_seldik = $this->input->post("seldik");
                         $waktu_lari = "00:".$this->input->post("waktu_lari");
                         $pull_up = $this->input->post("pull_up");
                         $sit_up = $this->input->post("sit_up");
@@ -149,6 +150,7 @@ class Datanilai extends CI_Controller {
                                 "shuttle_run"=>$suttle_run,
                                 "renang"=>$waktu_renang,
                                 "nilai" => $nilai_total,
+                                "nama_seldik"=>$nama_seldik,
                                 "keterangan" =>$keterangan,
                                 "date_created"=>date("Y-m-d",strtotime($tgl_pelaksanaan)),
                                  "flag_del"=>0
@@ -418,6 +420,7 @@ class Datanilai extends CI_Controller {
                         $berat_badan = $this->input->post("berat_badan");
                         $waktu_lari = $this->input->post("waktu_lari");
                         $pull_up = $this->input->post("pull_up");
+                        $nama_seldik = $this->input->post("seldik");
                         $sit_up = $this->input->post("sit_up");
                         $push_up = $this->input->post("push_up");
                         $suttle_run = $this->input->post("suttle_run");
@@ -464,6 +467,7 @@ class Datanilai extends CI_Controller {
                                 "sit_up"=>$sit_up,
                                 "push_up"=>$push_up,
                                 "shuttle_run"=>$suttle_run,
+                                "nama_seldik"=>$nama_seldik,
                                 "renang"=>$waktu_renang,
                                 "date_created"=>date("Y-m-d",strtotime($tgl_pelaksanaan)),
                                 "date_updated"=>date("Y-m-d H:i:s")

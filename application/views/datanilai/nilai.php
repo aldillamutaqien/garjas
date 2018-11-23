@@ -23,7 +23,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="invoice-wrap">
                                         <div class="invoice-img" style="color: white">
-                                            <h2 >Data Nilai Garjas</h2>
+                                            <h2 >Data Nilai Garjas Seldik <?php echo $data->nama_seldik ?></h2>
                                              <span>Tanggal Pelaksanaan : <?php echo date('d-m-Y',strtotime($data->date_created)) ; ?></span>
                                         </div>
                                          

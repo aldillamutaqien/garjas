@@ -90,6 +90,7 @@
                                 </div>
                             </div>
                         </div>
+                           <?php foreach($nilai as $nilai){ ?>
                          <div class="form-example-int form-horizental">
                             <div class="form-group">
                                 <div class="row">
@@ -98,12 +99,12 @@
                                     </div>
                                      <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                          <select name="satker" class="selectpicker" data-live-search="true">
+                                          <select name="seldik" class="selectpicker" data-live-search="true">
                                             <option value="0">--Pilih Seldik--</option>
                                             <?php 
-                                                foreach ($seldik->result() as $data) {
+                                                foreach ($seldik->result() as $seldik) {
                                                 ?>
-                                                <option value='<?php echo $nama_seldik ?>'><?php echo $data->nama_seldik ?></option>
+                                                <option value="<?php echo $seldik->nama_seldik ?>" <?php if($nilai->nama_seldik == $seldik->nama_seldik){ echo "selected"; } ?>><?php echo $seldik->nama_seldik ?></option>
                                                 <?php } ?>
                                           </select>
                                         </div>
@@ -113,7 +114,7 @@
                             </div>
                         </div>
                         <hr>
-                        <?php foreach($nilai as $nilai){ ?>
+                     
                         <div class="form-example-int form-horizental mg-t-15">
                             <div class="form-group">
                                 <div class="row">
