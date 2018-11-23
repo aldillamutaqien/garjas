@@ -51,13 +51,13 @@
                                         <th>Nama</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tanggal Lahir</th>
-                                        <th>Pangkat</th>
-                                        <th>Korp</th>
+                                        <th>Pangkat/Korps/NRP</th>
+                                        <th>Seldik&Tgl.Pelaks</th>
                                         <th>NRP</th>
                                         <th>Jabatan</th>
-                                        <th>Kesatuan</th>
-                                        <th>Matra</th>
+                                        <th>Jabatan</th>                                      
                                         <th>Tgl.Pelaksanaan</th>
+                                        <th>Hasil Test</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -71,14 +71,13 @@
                                             <td><?php echo $users->nama; ?></td>
                                             <td><?php echo $users->jenis_kelamin; ?></td>
                                             <td><?php echo date('d-m-Y',strtotime($users->tanggal_lahir)); ?></td>
-                                            <td><?php echo $users->pangkat; ?></td>
-                                            <td><?php echo $users->korps; ?></td>
-                                            <td><?php echo $users->nrp; ?></td>
-                                            <td><?php echo $users->jabatan; ?> </td>
-                                            <td><?php echo $users->kesatuan; ?></td>
-                                            <td><?php echo $users->matra; ?></td>
-                                            <td><?php echo date('d-m-Y',strtotime($users->tgl_pelaksanaan)); ?></td>
-                                            
+                                            <td><?php echo $users->pangkat; ?>/<?php echo $users->korps; ?><br><?php echo $users->nrp; ?></td>
+                                            <td><?php echo $users->nama_seldik; ?><br><?php echo date('d-m-Y',strtotime($users->tgl_pelaksanaan)); ?></td>
+                                            <td></td>
+                                            <td> </td>
+                                            <td><?php echo $users->jabatan; ?><br><?php echo $users->kesatuan; ?></td>                                         
+                                            <td></td>
+                                            <td><?php echo $users->nilai; ?>/<?php echo $users->keterangan; ?></td>
                                             <td>
                         
                                                 <a href="<?php echo site_url("datanilai/tampil_nilai/".$users->id_nilai); ?>" class="btn btn-info info-icon-notika btn-reco-mg btn-button-mg waves-effect">
@@ -98,9 +97,9 @@
                                         <th>Korp</th>
                                         <th>NRP</th>
                                         <th>Jabatan</th>
-                                        <th>Kesatuan</th>
-                                        <th>Matra</th>
+                                        <th>Jabatan</th>                                      
                                         <th>Tgl.Pelaksanaan</th>
+                                        <th>Hasil Test</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>

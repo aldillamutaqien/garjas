@@ -2,7 +2,7 @@
 class Datanilai_model extends CI_Model{
       public function get_datanilai_filter_by_flag_del(){
         
-        $this->db->select('personel.id as id_data_personil,personel.nama as nama, personel.pangkat as pangkat,personel.korps as korps,personel.nrp as nrp,personel.jenis_kelamin as jenis_kelamin,personel.jabatan as jabatan,personel.kesatuan as kesatuan,personel.matra as matra, personel.tanggal_lahir as tanggal_lahir,tb_nilai.id as id_nilai,tb_nilai.date_created as tgl_pelaksanaan');
+        $this->db->select('personel.id as id_data_personil,personel.nama as nama, personel.pangkat as pangkat,personel.korps as korps,personel.nrp as nrp,personel.jenis_kelamin as jenis_kelamin,personel.jabatan as jabatan,personel.kesatuan as kesatuan,personel.matra as matra, personel.tanggal_lahir as tanggal_lahir,tb_nilai.id as id_nilai,tb_nilai.date_created as tgl_pelaksanaan,tb_nilai.nilai as nilai,tb_nilai.keterangan as keterangan,personel.nama_kotama as nama_kotama,tb_nilai.nama_seldik as nama_seldik');
         $this->db->from('personel');
         $this->db->join('tb_nilai','personel.id = tb_nilai.id_data_personil');
         $this->db->where('tb_nilai.flag_del',0);
@@ -84,6 +84,22 @@ class Datanilai_model extends CI_Model{
         return $q->result();
 
        
+    }
+
+     function get_jumlah_by_seldik($where,$table){
+        // $this->db->select('COUNT(nama_seldik) as jumlah');
+        // $this->db->from('tb_nilai');
+        // $this->db->where('nama_seldik',$where);
+        // $total = $this->db->count();
+       
+
+        $total = $this->db->get_where($table,$where)->count();
+ print_r($total);die();
+
+
+        // $hasil=$this->db->query("SELECT COUNT(*) as jumlah FROM tb_nilai WHERE nama_seldik='$seldik' ");
+        // print_r($hasil);die();
+        return $hasil;
     }
 
 

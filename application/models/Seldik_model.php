@@ -6,5 +6,7 @@ class Seldik_model extends CI_Model{
         return $hasil;
     }
 
+    
+
 }
 ?>
