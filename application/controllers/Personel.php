@@ -28,8 +28,7 @@ class Personel extends CI_Controller {
                 
                 $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
                 $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
-                $this->form_validation->set_rules('korps', 'Korps', 'trim|required');
-                $this->form_validation->set_rules('nrp', 'NRP', 'trim|required');
+               
                 $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'trim|required');
                 $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'trim|required');
                 $this->form_validation->set_rules('matra', 'Matra', 'trim|required');
@@ -83,9 +82,15 @@ class Personel extends CI_Controller {
                         
                         $id_satker = $this->input->post("satker");
 
+                        if(!$id_satker){
+                            $satker = "NULL";
+                        } else {
                         $kesatuan = $this->satker_model->get_satker_by_id($id_satker)->result();
                         
                         $satker = $kesatuan[0]->nama_satker;
+                        }
+
+                       
 
                         $id_kotama = $this->input->post("kotama");
 

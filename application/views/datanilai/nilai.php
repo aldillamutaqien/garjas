@@ -175,7 +175,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <?php if($keterangan=="Lulus"){ ?>
+                                                <?php if($keterangan=="Memenuhi Syarat"){ ?>
                                                 <div class="invoice-hs"> 
                                                 <?php } else { ?>
                                                 <div class="invoice-hs gdt-inv sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0"> <?php } ?>

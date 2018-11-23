@@ -74,7 +74,7 @@
                             </div>
                             <div class="email-statis-wrap">
                                 <div class="email-round-nock">
-                                    <input type="text" class="knob" value="0" data-rel="55" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                                    <input type="text" class="knob" value="0" data-rel="50" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
                                 </div>
                                 <div class="email-ctn-nock">
                                     <p>Statistik Anda</p>
@@ -86,7 +86,7 @@
                                         <input type="text" class="knob" value="0" data-rel="75" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
                                     </div>
                                     <div class="email-ctn-nock">
-                                        <p>Bounce Rate</p>
+                                        <p>Memenuhi Syarat</p>
                                     </div>
                                 </div>
                                 <div class="email-round-pro">
@@ -94,7 +94,7 @@
                                         <input type="text" class="knob" value="0" data-rel="35" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
                                     </div>
                                     <div class="email-ctn-nock">
-                                        <p>Total Opened</p>
+                                        <p>Tidak Memenuhi Syarat</p>
                                     </div>
                                 </div>
                             </div>

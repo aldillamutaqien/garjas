@@ -90,6 +90,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-example-int form-horizental">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="hrzn-fm">Nama Seldik</label>
+                                    </div>
+                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                          <select name="satker" class="selectpicker" data-live-search="true">
+                                            <option value="0">--Pilih Seldik--</option>
+                                            <?php 
+                                                foreach ($seldik->result() as $data) {
+                                                ?>
+                                                <option value='<?php echo $nama_seldik ?>'><?php echo $data->nama_seldik ?></option>
+                                                <?php } ?>
+                                          </select>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
                         <hr>
                         <div class="form-example-int form-horizental mg-t-15">
                             <div class="form-group">

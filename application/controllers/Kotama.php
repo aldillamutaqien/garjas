@@ -11,7 +11,11 @@ class Kotama extends CI_Controller {
     }
     function dashboard(){
         if(_is_user_login($this)){
+            $this->load->model('kotama_model');
+            $user_id = _get_current_user_id($this);           
             $data = array();
+            $data['kotama']=$this->kotama_model->get_kotama_by_id_user($user_id);
+            //print_r($data['kotama']->nama_kotama);
             $this->load->view("kotama/dashboard",$data);
         }
     }

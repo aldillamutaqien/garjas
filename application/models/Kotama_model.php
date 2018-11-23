@@ -6,5 +6,11 @@ class Kotama_model extends CI_Model{
         return $hasil;
     }
 
+     function get_kotama_by_id_user($id_user){
+        $hasil=$this->db->query("SELECT nama_kotama FROM personel WHERE id_user = '$id_user' LIMIT 1");
+        return $hasil->row();
+
+    }
+
 }
 ?>

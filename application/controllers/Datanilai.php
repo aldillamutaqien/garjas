@@ -269,9 +269,9 @@ class Datanilai extends CI_Controller {
         }
 
           if($penilaian['nilai_total']>70 && $nilai_garjas > 70 && $lari>40 && $pull_up>40 && $sit_up > 40 && $push_up > 40 && $shuttle_run > 40){
-                $penilaian['keterangan'] = "Lulus";
+                $penilaian['keterangan'] = "Memenuhi Syarat";
             } else  {
-                $penilaian['keterangan'] = "Tidak Lulus";
+                $penilaian['keterangan'] = "Tidak Memenuhi Syarat";
             }
 
             if($penilaian['nilai_total']>=81 && $penilaian['nilai_total']<=100 ){
