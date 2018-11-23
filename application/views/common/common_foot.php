@@ -30,7 +30,10 @@
     <!-- flot JS -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/flot/jquery.flot.js"); ?>"></script>
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/flot/jquery.flot.resize.js"); ?>"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/js/flot/jquery.flot.time.js"); ?>"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/js/flot/jquery.flot.tooltip.min.js"); ?>"></script>
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/flot/flot-active.js"); ?>"></script>
+
 
     <!-- knob JS -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/knob/jquery.knob.js"); ?>"></script>
@@ -56,3 +59,12 @@
     <!-- main JS -->
 
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/main.js"); ?>"></script>
+
+
+
+
+
+
+    
+
+   
