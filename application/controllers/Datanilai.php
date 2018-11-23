@@ -48,6 +48,8 @@ class Datanilai extends CI_Controller {
             $data = array();
             $this->load->model("personel_model");
             $this->load->model("users_model");
+            $this->load->model("seldik_model");            
+            $data['seldik'] = $this->seldik_model->get_seldik();
             $data["user_types"] = $this->users_model->get_user_type();
             $user = $this->personel_model->get_personel_by_id($user_id);
             $data["user"] = $user;
@@ -356,6 +358,8 @@ class Datanilai extends CI_Controller {
      public function update_nilai($user_id){
         if(_is_user_login($this)){
             $data = array();
+             $this->load->model("seldik_model");            
+            $data['seldik'] = $this->seldik_model->get_seldik();
             $this->load->model("datanilai_model");
             $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
            // print("<pre>".print_r($nilai[0]->id_data_personil,true)."</pre>");die();
