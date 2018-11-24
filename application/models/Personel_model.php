@@ -8,8 +8,7 @@ class Personel_model extends CI_Model{
         //$this->db->where_not_in('id',_get_current_user_id($this));
         $q = $this->db->get();
         return $q->result();
-        print_r($q);
-        die();
+      
     }
    public function get_user(){
         $q = $this->db->get('users');

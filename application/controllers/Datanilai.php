@@ -492,7 +492,6 @@ class Datanilai extends CI_Controller {
         }
     }
 
-
  
   
 }

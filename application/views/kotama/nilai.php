@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <?php  $this->load->view("common/common_head_data_table"); ?> 
-    <body>
-    <?php  $this->load->view("admin/common/common_header_top"); ?>
+<!doctype html>
+<html class="no-js" lang="">
+
+<?php  $this->load->view("common/common_head"); ?>
+    <link rel="stylesheet" href="<?php echo base_url($this->config->item("theme_admin")."/js/fullcalendar/fullcalendar.min.css"); ?>"> 
+
+<body>
+
+    <?php  $this->load->view("kotama/common/common_header_top"); ?>
     <!-- End Header Top Area -->
     <!-- Mobile Menu start -->
-    <?php  $this->load->view("admin/common/common_header_mobile"); ?>
+    <?php  $this->load->view("kotama/common/common_header_mobile"); ?>
     <!-- Mobile Menu end -->
     <!-- Main Menu area start-->
-    <?php  $this->load->view("admin/common/common_header_menu"); ?>
+    <?php  $this->load->view("kotama/common/common_header_menu"); ?>
     <!-- Main Menu area End-->
-    <!-- Form Examples area start-->
+   <!-- Form Examples area start-->
     <div class="form-example-area">
         <div class="container">
             <div class="row">
@@ -188,7 +192,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                             
+                            
                             </div>
                         </div>
                     </div>
@@ -232,6 +236,8 @@
         });
        </script>
 
-        
-    </body>
+
+
+</body>
+
 </html>
