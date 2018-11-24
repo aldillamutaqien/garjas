@@ -31,7 +31,7 @@ class Seldik_model extends CI_Model{
 			and tb_nilai.nama_seldik = 'DIKTUKBA'
 			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
 			ORDER BY tb_nilai.date_created DESC");
-        return $q->row();
+        return $q->result();
     }
 
      function get_personel_diktukba_by_kotama_this_year($nama_kotama){
@@ -56,7 +56,7 @@ class Seldik_model extends CI_Model{
 			and tb_nilai.nama_seldik = 'DIKTUKPA'
 			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
 			ORDER BY tb_nilai.date_created DESC");
-        return $q->row();
+        return $q->result();
     }
 
     function get_personel_diktukpa_by_kotama_this_year($nama_kotama){
@@ -80,7 +80,7 @@ class Seldik_model extends CI_Model{
 			and tb_nilai.nama_seldik = 'DIKLAPA I'
 			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
 			ORDER BY tb_nilai.date_created DESC");
-        return $q->row();
+        return $q->result();
     }
 
      function get_personel_diklapasatu_by_kotama_this_year($nama_kotama){
