@@ -30,8 +30,8 @@
                                         <i class="notika-icon notika-house"></i>
                                     </div>
                                     <div class="breadcomb-ctn">
-                                        <h2><?php echo $datapersonel->kesatuan?></h2>
-                                        <p>Selamat datang <span class="bread-ntd"><?php echo $datapersonel->nama?></span></p>
+                                        <h2><?php echo @$datapersonel->kesatuan?></h2>
+                                        <p>Selamat datang <span class="bread-ntd"><?php echo @$datapersonel->nama?></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $count_datadiktukba;?></span></h2>
+                            <h2><span class="counter"><?php echo @$count_datadiktukba;?></span></h2>
                             <p><a href="<?php echo site_url("users/"); ?>">
                                      DIKTUKBA</a></p>
                         </div>
@@ -64,7 +64,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $count_datadiktukpa;?></span></h2>
+                            <h2><span class="counter"><?php echo @$count_datadiktukpa;?></span></h2>
                             <p><a href="<?php echo site_url("personel/"); ?>">
                                      DIKTUKPA</a></p>
                         </div>
@@ -74,7 +74,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $count_datadiklapa1;?></span></h2>
+                            <h2><span class="counter"><?php echo @$count_datadiklapa1;?></span></h2>
                             <p><a href="<?php echo site_url("dataadmin/"); ?>">
                                      DIKLAPA I</a></p>
                         </div>
@@ -84,7 +84,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $count_datadiklapa2;?></span></h2>
+                            <h2><span class="counter"><?php echo @$count_datadiklapa2;?></span></h2>
                             <p><a href="<?php echo site_url("datanilai/tabel_nilai"); ?>">
                                      DIKLAPA II</a></p>
                         </div>
@@ -102,7 +102,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $count_datapersonel_satker;?></span></h2>
+                            <h2><span class="counter"><?php echo @$count_datapersonel_satker;?></span></h2>
                             <p><a href="<?php echo site_url("datanilai/tabel_nilai"); ?>">
                                      Jumlah Personel</a></p>
                         </div>
@@ -112,7 +112,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $count_datanilai_satker;?></span></h2>
+                            <h2><span class="counter"><?php echo @$count_datanilai_satker;?></span></h2>
                             <p><a href="<?php echo site_url("dataadmin/"); ?>">
                                      Jumlah Personel Mengikuti Ujian</a></p>
                         </div>
@@ -122,7 +122,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter"><?php echo $tidak_ikut = $count_datapersonel_satker - $count_datanilai_satker;?></span></h2>
+                            <h2><span class="counter"><?php echo @$tidak_ikut = $count_datapersonel_satker - $count_datanilai_satker;?></span></h2>
                             <p><a href="<?php echo site_url("dataadmin/"); ?>">
                                      Jumlah Personel Tidak Mengikuti Ujian</a></p>
                         </div>
@@ -141,7 +141,7 @@
                         <div class="curved-inner-pro">
                             <div class="curved-ctn">
                                 <h2>Statistik Peserta Seldik</h2>
-                                <p><?php echo $datapersonel->kesatuan?></p>
+                                <p><?php echo @$datapersonel->kesatuan?></p>
                             </div>
                         </div>
                         <div id="bar-chart-deka" class="flot-chart bar-three bar-hm-three" style="padding: 0px; position: relative;">
@@ -157,7 +157,7 @@
                             </div>
                             <div class="email-statis-wrap">
                                 <div class="email-round-nock">
-                                    <input type="text" class="knob" value="0" data-rel="<?php echo $count_datanilai_satker;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                                    <input type="text" class="knob" value="0" data-rel="<?php echo @$count_datanilai_satker;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
                                 </div>
                                 <div class="email-ctn-nock">
                                     <p>Personel Mengikuti Ujian</p>
@@ -166,7 +166,7 @@
                             <div class="email-round-gp">
                                 <div class="email-round-pro">
                                     <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $count_datalulus; ?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
+                                        <input type="text" class="knob" value="0" data-rel="<?php echo @$count_datalulus; ?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
                                     </div>
                                     <div class="email-ctn-nock">
                                         <p>Personel Lulus Ujian</p>
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="email-round-pro">
                                     <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $count_datatdklulus; ?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
+                                        <input type="text" class="knob" value="0" data-rel="<?php echo @$count_datatdklulus; ?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
                                     </div>
                                     <div class="email-ctn-nock">
                                         <p>Personel Tidak Lulus Ujian</p>
@@ -252,8 +252,8 @@
 
      <script>
 
-            var datams = <?php echo $count_datams;?>;
-            var datatms = <?php echo $count_datatms;?>;
+            var datams = <?php echo @$count_datams;?>;
+            var datatms = <?php echo @$count_datatms;?>;
             var ctx = document.getElementById("barchartdklagi");
             var barchart2 = new Chart(ctx, {
                 type: 'bar',

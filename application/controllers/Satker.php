@@ -20,26 +20,26 @@ class Satker extends CI_Controller {
             $id_user = _get_current_user_id($this);
 
 
-            $data['datapersonel'] = $this->personel_model->get_personel_by_id_user($id_user);
-            $data['datanilai_satker'] = $this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan($data['datapersonel']->kesatuan);
-            $data["datapersonel_satker"] = $this->personel_model->get_personel_by_satker($data['datapersonel']->kesatuan);
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+            $data['datanilai_satker'] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan($data['datapersonel']->kesatuan);
+            $data["datapersonel_satker"] = @$this->personel_model->get_personel_by_satker($data['datapersonel']->kesatuan);
 
-            $data["datadiktukba"] = $this->seldik_model->get_personel_diktukba_by_satker_this_year($data['datapersonel']->kesatuan);
-            $data["datadiktukpa"] = $this->seldik_model->get_personel_diktukpa_by_satker_this_year($data['datapersonel']->kesatuan);
-            $data["datadiklapa1"] = $this->seldik_model->get_personel_diklapasatu_by_satker_this_year($data['datapersonel']->kesatuan);
-            $data["datadiklapa2"] = $this->seldik_model->get_personel_diklapadua_by_satker_this_year($data['datapersonel']->kesatuan);
-
-
-            $data["datalulus"] = $this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_lulus($data['datapersonel']->kesatuan);
-            $data["datatdklulus"] = $this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus($data['datapersonel']->kesatuan);
+            $data["datadiktukba"] = @$this->seldik_model->get_personel_diktukba_by_satker_this_year($data['datapersonel']->kesatuan);
+            $data["datadiktukpa"] = @$this->seldik_model->get_personel_diktukpa_by_satker_this_year($data['datapersonel']->kesatuan);
+            $data["datadiklapa1"] = @$this->seldik_model->get_personel_diklapasatu_by_satker_this_year($data['datapersonel']->kesatuan);
+            $data["datadiklapa2"] = @$this->seldik_model->get_personel_diklapadua_by_satker_this_year($data['datapersonel']->kesatuan);
 
 
-            $data["datalulus_diktuba"] = $this->seldik_model->get_lulus_diktukba_by_kesatuan_this_year($data['datapersonel']->kesatuan);
-            $data["datalulus_diktupa"] = $this->seldik_model->get_lulus_diktukpa_by_kesatuan_this_year($data['datapersonel']->kesatuan);
-            $data["datalulus_diklapa1"] = $this->seldik_model->get_lulus_diklapasatu_by_kesatuan_this_year($data['datapersonel']->kesatuan);
-            $data["datalulus_diklapa2"] = $this->seldik_model->get_lulus_diklapadua_by_kesatuan_this_year($data['datapersonel']->kesatuan);
-            $data["datams"] = $this->seldik_model->get_ms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
-            $data["datatms"] = $this->seldik_model->get_tms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_lulus($data['datapersonel']->kesatuan);
+            $data["datatdklulus"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus($data['datapersonel']->kesatuan);
+
+
+            $data["datalulus_diktuba"] = @$this->seldik_model->get_lulus_diktukba_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus_diktupa"] = @$this->seldik_model->get_lulus_diktukpa_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus_diklapa1"] = @$this->seldik_model->get_lulus_diklapasatu_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus_diklapa2"] = @$this->seldik_model->get_lulus_diklapadua_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datams"] = @$this->seldik_model->get_ms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datatms"] = @$this->seldik_model->get_tms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
 
 
             
