@@ -33,5 +33,11 @@ class Satker_model extends CI_Model{
         return $q->result();
     }
 
+    function get_all_satker_by_kotama($nama_kotama){
+        $q = $this->db->query("SELECT * FROM satker ORDER BY id_satker ASC
+			");
+        return $q->result();
+    }
+
 }
 ?>

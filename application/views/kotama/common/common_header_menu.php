@@ -115,8 +115,8 @@
                         </div>
                         <div id="datanilai" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <?php foreach($satker as $satker) { ?>
-                                <li><a href="<?php echo site_url("kotama/nilai_satker/$satker->kesatuan") ?>"><?php echo $satker->kesatuan ?></a>
+                                <?php foreach($satuan as $satker) { ?>
+                                <li><a href="<?php echo site_url("kotama/nilai_satker/$satker->nama_satker") ?>"><?php echo $satker->nama_satker ?></a>
                                 </li>
                                 <?php } ?>
                             </ul>

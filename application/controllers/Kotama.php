@@ -27,6 +27,7 @@ class Kotama extends CI_Controller {
             $data["datadiklapa1"] = $this->seldik_model->get_personel_diklapasatu_by_kotama_this_year($data['kotama']->nama_kotama);
             $data["datadiklapa2"] = $this->seldik_model->get_personel_diklapadua_by_kotama_this_year($data['kotama']->nama_kotama);
             $data["satker"]       = $this->satker_model->get_satker_by_kotama($data['kotama']->nama_kotama);
+            $data["satuan"]       = $this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
 
             $data["lulus_diktukba"] = $this->seldik_model->get_lulus_diktukba_by_kotama_this_year($data['kotama']->nama_kotama);
             $data["lulus_diktukpa"] = $this->seldik_model->get_lulus_diktukpa_by_kotama_this_year($data['kotama']->nama_kotama);
@@ -69,7 +70,7 @@ class Kotama extends CI_Controller {
             $user_id = _get_current_user_id($this); 
             $data['kesatuan'] = urldecode($kesatuan);
             $data['kotama']=$this->kotama_model->get_kotama_by_id_user($user_id);
-            $data["satker"]       = $this->satker_model->get_satker_by_kotama($data['kotama']->nama_kotama);
+            $data["satuan"]       = $this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
             $data['datanilai_satker'] = $this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan(urldecode($kesatuan));
             $data["datapersonel_satker"] = $this->personel_model->get_personel_by_satker(urldecode($kesatuan)); 
 
