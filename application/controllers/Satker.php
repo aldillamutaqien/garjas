@@ -236,6 +236,198 @@ class Satker extends CI_Controller {
 
         }
 
+        function datanilai_satker(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan($data['datapersonel']->kesatuan);
+
+
+
+            $this->load->view("satker/data_personel",$data);
+
+            }
+
+        }
+
+
+
+        function datapersonel_satker(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->personel_model->get_personel_by_satker($data['datapersonel']->kesatuan);
+
+
+
+            $this->load->view("satker/data_personel_all",$data);
+
+            }
+
+        }
+
+
+        function datapersoneltidakikut_satker(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_a"] = @$this->personel_model->get_personel_id_by_satker($data['datapersonel']->kesatuan);
+
+            $data["data_b"] = @$this->personel_model->get_personel_id_datanilai_filter_by_flag_del_and_kesatuan($data['datapersonel']->kesatuan);
+
+
+            $t = $data["data_a"];
+             $u = $data["data_b"];
+
+
+            $result=array_diff($t,$u);
+
+
+            var_dump($result);
+
+
+            print "<pre>";
+            print_r($data["data_a"]);
+            print "</pre>";
+
+                        print "<pre>";
+            print_r($data["data_b"]);
+            print "</pre>";
+
+
+            die();
+
+
+
+            $this->load->view("satker/data_personel_all",$data);
+
+            }
+
+        }
+
+
+
+
+        function datapersonel_lulus_satker(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_lulus($data['datapersonel']->kesatuan);
+
+
+            $this->load->view("satker/data",$data);
+
+            }
+
+        }
+
+
+        function datapersonel_tdklulus_satker(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus($data['datapersonel']->kesatuan);
+
+
+            $this->load->view("satker/data",$data);
+
+            }
+
+        }
+
+
+
+        function ms(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->seldik_model->get_ms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datatms"] = @$this->seldik_model->get_tms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+
+
+            $this->load->view("satker/mstms",$data);
+
+            }
+
+        }
+
+
+        function tms(){
+        if(_is_user_login($this)){
+            $data = array();
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+            $data["data_selidik"] = @$this->seldik_model->get_tms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+
+
+            $this->load->view("satker/mstms",$data);
+
+            }
+
+        }
+
+
 
     public function tampil_nilai($user_id){
             $data = array();
@@ -386,7 +578,18 @@ class Satker extends CI_Controller {
         return $bmi;
     }
     
+    public function profil()
+    {
+        if(_is_user_login($this)){
+            $data = array();
 
+            $id_user = _get_current_user_id($this);
+
+            $this->load->model("personel_model");
+            $data["users"] = $this->personel_model->get_personel_by_id_user($id_user);
+            $this->load->view("satker/profil",$data);
+        }
+    }
 	
 }
 ?>
