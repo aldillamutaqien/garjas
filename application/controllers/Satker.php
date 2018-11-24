@@ -34,13 +34,23 @@ class Satker extends CI_Controller {
             $data["datatdklulus"] = $this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus($data['datapersonel']->kesatuan);
 
 
+            $data["datalulus_diktuba"] = $this->seldik_model->get_lulus_diktukba_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus_diktupa"] = $this->seldik_model->get_lulus_diktukpa_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus_diklapa1"] = $this->seldik_model->get_lulus_diklapasatu_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datalulus_diklapa2"] = $this->seldik_model->get_lulus_diklapadua_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datams"] = $this->seldik_model->get_ms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
+            $data["datatms"] = $this->seldik_model->get_tms_by_kesatuan_this_year($data['datapersonel']->kesatuan);
 
-          
+
+            
+            $data['count_datams'] = count($data["datams"]);
+            $data['count_datatms'] = count($data["datatms"]);
 
 
-            // var_dump($data["datadiklapa1"]); die();
-
-
+            $data['count_datalulus_diktuba'] = count($data["datalulus_diktuba"]);
+            $data['count_datalulus_diktupa'] = count($data["datalulus_diktupa"]);
+            $data['count_datalulus_diklapa1'] = count($data["datalulus_diklapa1"]);
+            $data['count_datalulus_diklapa2'] = count($data["datalulus_diklapa2"]);
 
             $data['count_datalulus'] = count($data["datalulus"]);
             $data['count_datatdklulus'] = count($data["datatdklulus"]);
@@ -50,6 +60,7 @@ class Satker extends CI_Controller {
             $data['count_datadiklapa2'] = count($data["datadiklapa2"]);
             $data['count_datapersonel_satker'] = count($data["datapersonel_satker"]);
             $data['count_datanilai_satker'] = count($data["datanilai_satker"]);
+
 
             $this->load->view("satker/dashboard",$data);
         }

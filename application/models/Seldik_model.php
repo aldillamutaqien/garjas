@@ -104,7 +104,7 @@ class Seldik_model extends CI_Model{
 			and tb_nilai.nama_seldik = 'DIKLAPA II'
 			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
 			ORDER BY tb_nilai.date_created DESC");
-        return $q->row();
+        return $q->result();
     }
     function get_personel_diklapadua_by_kotama_this_year($nama_kotama){
         $q = $this->db->query("
@@ -171,5 +171,86 @@ class Seldik_model extends CI_Model{
         return $q->result();
     }
 
+
+    function get_lulus_diktukba_by_kesatuan_this_year($kesatuan){
+        $q = $this->db->query("
+        	select * from personel 
+        	left join tb_nilai on personel.id = tb_nilai.id_data_personil
+			where personel.kesatuan = '".$kesatuan."'
+			and personel.flag_del = 0
+			and tb_nilai.nama_seldik = 'DIKTUKBA'
+			and tb_nilai.keterangan = 'LULUS'
+			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
+     function get_lulus_diktukpa_by_kesatuan_this_year($kesatuan){
+        $q = $this->db->query("
+        	select * from personel 
+        	left join tb_nilai on personel.id = tb_nilai.id_data_personil
+			where personel.kesatuan = '".$kesatuan."'
+			and personel.flag_del = 0
+			and tb_nilai.nama_seldik = 'DIKTUKPA'
+			and tb_nilai.keterangan = 'LULUS'
+			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
+
+     function get_lulus_diklapasatu_by_kesatuan_this_year($kesatuan){
+        $q = $this->db->query("
+        	select * from personel 
+        	left join tb_nilai on personel.id = tb_nilai.id_data_personil
+			where personel.kesatuan = '".$kesatuan."'
+			and personel.flag_del = 0
+			and tb_nilai.nama_seldik = 'DIKLAPA I'
+			and tb_nilai.keterangan = 'LULUS'
+			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
+     function get_lulus_diklapadua_by_kesatuan_this_year($kesatuan){
+        $q = $this->db->query("
+        	select * from personel 
+        	left join tb_nilai on personel.id = tb_nilai.id_data_personil
+			where personel.kesatuan = '".$kesatuan."'
+			and personel.flag_del = 0
+			and tb_nilai.nama_seldik = 'DIKLAPA II'
+			and tb_nilai.keterangan = 'LULUS'
+			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
+
+    function get_ms_by_kesatuan_this_year($kesatuan){
+        $q = $this->db->query("
+        	select * from personel 
+        	left join tb_nilai on personel.id = tb_nilai.id_data_personil
+			where personel.kesatuan = '".$kesatuan."'
+			and personel.flag_del = 0
+			and tb_nilai.kategori = 'Memenuhi Sarat'
+			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
+    function get_tms_by_kesatuan_this_year($kesatuan){
+        $q = $this->db->query("
+        	select * from personel 
+        	left join tb_nilai on personel.id = tb_nilai.id_data_personil
+			where personel.kesatuan = '".$kesatuan."'
+			and personel.flag_del = 0
+			and tb_nilai.kategori = 'Tidak Memenuhi Sarat'
+			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
 }
 ?>
+
+

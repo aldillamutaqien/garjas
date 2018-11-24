@@ -7,8 +7,6 @@
                         </li>
                         <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personel</a>
                         </li>
-                        <li><a data-toggle="tab" href="#datanilai"><i class="notika-icon notika-edit"></i> Data Nilai</a>
-                        </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">

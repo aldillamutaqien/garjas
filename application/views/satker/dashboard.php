@@ -140,11 +140,13 @@
                     <div class="sale-statistic-inner notika-shadow mg-tb-30">
                         <div class="curved-inner-pro">
                             <div class="curved-ctn">
-                                <h2>Sales Statistics</h2>
-                                <p>Vestibulum purus quam scelerisque, mollis nonummy metus</p>
+                                <h2>Statistik Peserta Seldik</h2>
+                                <p><?php echo $datapersonel->kesatuan?></p>
                             </div>
                         </div>
-                        <div id="bar-chart" class="flot-chart bar-three bar-hm-three" style="padding: 0px; position: relative;"><canvas class="flot-base" width="331" height="241" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 368px; height: 268px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 27px; text-align: center;">1</div><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 81px; text-align: center;">2</div><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 135px; text-align: center;">3</div><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 189px; text-align: center;">4</div><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 243px; text-align: center;">5</div><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 297px; text-align: center;">6</div><div style="position: absolute; max-width: 89px; top: 254px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 351px; text-align: center;">7</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; top: 2px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 1px; text-align: right;">120</div><div style="position: absolute; top: 243px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 13px; text-align: right;">0</div><div style="position: absolute; top: 202px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 8px; text-align: right;">20</div><div style="position: absolute; top: 162px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 8px; text-align: right;">40</div><div style="position: absolute; top: 122px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 8px; text-align: right;">60</div><div style="position: absolute; top: 82px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 8px; text-align: right;">80</div><div style="position: absolute; top: 42px; font: 400 11px/14px Roboto, sans-serif; color: rgb(0, 194, 146); left: 1px; text-align: right;">100</div></div></div><canvas class="flot-overlay" width="331" height="241" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 368px; height: 268px;"></canvas></div>
+                        <div id="bar-chart-deka" class="flot-chart bar-three bar-hm-three" style="padding: 0px; position: relative;">
+
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
@@ -191,31 +193,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp">
-                        <canvas height="140vh" width="180vw" id="barchartdk"></canvas>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="bar-chart-wp sm-res-mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart2"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart3"></canvas>
+                        <div class="curved-ctn">
+                            <h2>Kategori Seldik</h2>
+                            <p>..............................</p>
+                        
+                        </div>
+                        <canvas height="158vh" width="180vw" id="barchartdklagi"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart4"></canvas>
+                     <div class="bar-chart-wp sm-res-mg-t-30 chart-display-nn">
+                        <div class="curved-inner-pro">
+                            <div class="curved-ctn">
+                                <h2>Kalender</h2>
+                                <p>..............................</p>
+                            </div>
+                        </div>
+                        <div id="calendar" ></div> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <!-- Start Footer area-->
@@ -251,27 +251,24 @@
 
 
      <script>
-            var ctx = document.getElementById("barchartdk");
-            var barchart1 = new Chart(ctx, {
+
+            var datams = <?php echo $count_datams;?>;
+            var datatms = <?php echo $count_datatms;?>;
+            var ctx = document.getElementById("barchartdklagi");
+            var barchart2 = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["Istimewa", "Baik Sekali", "Baik", "Cukup", "Kurang"],
+                    labels: ["MS", "TMS"],
                     datasets: [{
-                        label: 'Bar Chart',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: '',
+                        data: [datams, datatms],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
-                             'rgb(50,205,50, 0.2)',
-                             'rgba(255, 206, 86, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(0, 0, 0, 0.2)'
+                            'rgba(255, 99, 132, 0.2)'
                         ],
                         borderColor: [
                             'rgba(75, 192, 192, 1)',
-                             'rgba(54, 162, 235, 1)',
-                             'rgba(255, 206, 86, 1)',
-                            'rgba(255,99,132,1)',
-                            'rgba(0, 0, 0, 1)'
+                            'rgba(255,99,132,1)'
                         ],
                         borderWidth: 1
                     }]
@@ -287,6 +284,102 @@
                 }
             });
                  
+
+       </script>
+
+       <script>
+                        /*--------------------------
+                 Bar chart Active Class
+                ---------------------------- */ 
+            var data1 = [
+                    [1, <?php echo $count_datalulus_diktuba; ?>],
+                    [2, <?php echo $count_datalulus_diktupa; ?>],
+                    [3, <?php echo $count_datalulus_diklapa1; ?>],
+                    [4, <?php echo $count_datalulus_diklapa2; ?>]
+                    
+                ],
+                data2 = [
+                    [1, <?php echo $count_data_tidak_lulus_diktukba = $count_datadiktukba - $count_datalulus_diktuba; ?>],
+                    [2, <?php echo $count_data_tidak_lulus_diktukpa = $count_datadiktukpa - $count_datalulus_diktupa; ?>],
+                    [3, <?php echo $count_data_tidak_lulus_diklapa1 = $count_datadiklapa1 - $count_datalulus_diklapa1; ?>],
+                    [4, <?php echo $count_data_tidak_lulus_diklapa2 = $count_datadiklapa2 - $count_datalulus_diklapa2; ?>]
+                ],
+                data3 = [
+                    [1, <?php echo $count_datadiktukba; ?>],
+                    [2, <?php echo $count_datadiktukpa; ?>],
+                    [3, <?php echo $count_datadiklapa1; ?>],
+                    [4, <?php echo $count_datadiklapa2; ?>]
+                ],
+                barData = [{
+                    label: "Lulus",
+                    data: data1,
+                    color: "#00c292"
+                }, {
+                    label: "Tidak Lulus",
+                    data: data2,
+                    color: "#fb9678"
+                }, {
+                    label: "Total Seldik",
+                    data: data3,
+                    color: "#01c0c8"
+                }];
+            $("#bar-chart-deka")[0] && $.plot($("#bar-chart-deka"), barData, {
+                series: {
+                    bars: {
+                        show: !0,
+                        barWidth: .05,
+                        order: 1,
+                        fill: 1
+                    }
+                },
+                grid: {
+                    borderWidth: 1,
+                    borderColor: "#eee",
+                    show: !0,
+                    hoverable: !0,
+                    clickable: !0
+                },
+                yaxis: {
+                    tickColor: "#eee",
+                    tickDecimals: 0,
+                    font: {
+                        lineHeight: 14,
+                        style: "normal",
+                        color: "#00c292"
+                    },
+                    shadowSize: 0
+                },
+                xaxis: {
+                    tickColor: "#fff",
+                    tickDecimals: 0,
+                    font: {
+                        lineHeight: 14,
+                        style: "normal",
+                        color: "#00c292"
+                    },
+                    shadowSize: 0,
+                    ticks:[[1,'DIKTUKBA'],[2,'DIKTUKPA'],[3,'DIKLAPA I'],[4,'DIKLAPA II']]
+                },
+                legend: {
+                    container: ".flc-bar",
+                    backgroundOpacity: .5,
+                    noColumns: 0,
+                    backgroundColor: "white",
+                    lineWidth: 0
+                }
+            }), $(".flot-chart")[0] && ($(".flot-chart").bind("plothover", function(event, pos, item) {
+                if (item) {
+                    var x = item.datapoint[0].toFixed(2),
+                        y = item.datapoint[1];
+                    $(".flot-tooltip").html(item.series.label +" " + y).css({
+                        top: item.pageY + 5,
+                        left: item.pageX + 5
+                    }).show()
+                } else $(".flot-tooltip").hide()
+            }), $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body"))
+
+
+
 
        </script>
 
