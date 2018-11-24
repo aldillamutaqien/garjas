@@ -240,8 +240,22 @@ class Datanilai_model extends CI_Model{
 
        
     }
+	
+	public function get_data_pers_tidak_seldik_filter_by_flag_del($id){
+        
+        $this->db->select();
+        $this->db->from('personel');
+        $this->db->where('id',$id);
+        $this->db->where('flag_del',0);
+         //$this->db->where_not_in('id',_get_current_user_id($this));
+        $q = $this->db->get();
+        return $q->result();
 
-
+	}
+	
+	function cek_nilai_by_id($id){
+		return $this->db->query("SELECT * FROM tb_nilai WHERE id_data_personil = '$id' ");
+	}
 
 }
 ?>
