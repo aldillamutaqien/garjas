@@ -134,167 +134,7 @@
                 </div>
             </div>
     </div>
-<div class="sale-statistic-area">
-        <div class="container">
-            <div class="row">
-               
-                
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
-                        <div class="email-ctn-round">
-                            <div class="email-rdn-hd">
-                                <h2>Peserta Seldik Diktukba <?php echo $kotama->nama_kotama." ".date("Y"); ?></h2>
-                            </div>
-                           
-                            <div class="email-statis-wrap">
-                                 <div class="email-ctn-nock">
-                                    <p>Jumlah Peserta Seldik </p>
-                                </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiktukba;?></span></h1></center>
-                               
-                               
-                            </div>
-                           
-                            <div class="email-round-gp">
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $count_lulus_diktukba;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Lulus</p>
-                                    </div>
-                                </div>
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $tidak_lulus = $count_datadiktukba - $count_lulus_diktukba;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Tidak Lulus</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
-                        <div class="email-ctn-round">
-                            <div class="email-rdn-hd">
-                                <h2>Peserta Seldik Diktukpa <?php echo $kotama->nama_kotama." ".date("Y"); ?></h2>
-                            </div>
-                           
-                            <div class="email-statis-wrap">
-                                 <div class="email-ctn-nock">
-                                    <p>Jumlah Peserta Seldik </p>
-                                </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiktukpa;?></span></h1></center>
-                               
-                               
-                            </div>
-                           
-                            <div class="email-round-gp">
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $count_lulus_diktukpa;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Lulus</p>
-                                    </div>
-                                </div>
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $tidak_lulus = $count_datadiktukpa - $count_lulus_diktukpa;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Tidak Lulus</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
-                        <div class="email-ctn-round">
-                            <div class="email-rdn-hd">
-                                <h2>Peserta Seldik Diklapa I <?php echo $kotama->nama_kotama." ".date("Y"); ?></h2>
-                            </div>
-                           
-                            <div class="email-statis-wrap">
-                                <div class="email-ctn-nock">
-                                    <p>Jumlah Peserta Seldik </p>
-                                </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiklapa1;?></span></h1></center>
-                               
-                                
-                            </div>
-                           
-                            <div class="email-round-gp">
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $count_lulus_diklapa1;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Lulus</p>
-                                    </div>
-                                </div>
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $tidak_lulus = $count_datadiklapa1 - $count_lulus_diklapa1;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Tidak Lulus</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
-                        <div class="email-ctn-round">
-                            <div class="email-rdn-hd">
-                                <h2>Peserta Seldik Diklapa II <?php echo $kotama->nama_kotama." ".date("Y"); ?></h2>
-                            </div>
-                           
-                            <div class="email-statis-wrap">
-                                 <div class="email-ctn-nock">
-                                    <p>Jumlah Peserta Seldik </p>
-                                </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiklapa2;?></span></h1></center>
-                               
-                               
-                            </div>
-                           
-                            <div class="email-round-gp">
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $count_lulus_diklapa2;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Lulus</p>
-                                    </div>
-                                </div>
-                                <div class="email-round-pro">
-                                    <div class="email-signle-gp">
-                                        <input type="text" class="knob" value="0" data-rel="<?php echo $tidak_lulus = $count_datadiklapa2 - $count_lulus_diklapa2;?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
-                                    </div>
-                                    <div class="email-ctn-nock">
-                                        <p>Tidak Lulus</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           
-            </div>
-        </div>
-    </div>
+<br>
      <div class="bar-chart-area">
         <div class="container">
             <div class="row">
@@ -302,25 +142,9 @@
                     <div class="bar-chart-wp">
                         <canvas height="140vh" width="180vw" id="barchartdk"></canvas>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp sm-res-mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart2"></canvas>
-                    </div>
-                </div>
+                </div>                
             </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart3"></canvas>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart4"></canvas>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- Breadcomb area End-->
@@ -360,9 +184,9 @@
             var barchart1 = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["Istimewa", "Baik Sekali", "Baik", "Cukup", "Kurang"],
+                    labels: [<?php foreach($satker as $satker){echo '"'. $satker->kesatuan.'",';} ?>],
                     datasets: [{
-                        label: 'Bar Chart',
+                        label: 'Kelulusan Seldik Diktukba tiap Satker',
                         data: [12, 19, 3, 5, 2, 3],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',

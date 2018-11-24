@@ -115,7 +115,7 @@
                         </div>
                         <div id="datanilai" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="<?php echo site_url("datanilaifront/tabel_nilai") ?>">Hasil Garjas</a>
+                                <li><a href="<?php echo site_url("kotama/nilai_satker") ?>">Data Nilai Satker</a>
                                 </li>
                                 
                             </ul>
