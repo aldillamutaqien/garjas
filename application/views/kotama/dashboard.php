@@ -125,8 +125,8 @@
                             <div class="website-traffic-ctn">
 
                                 <h2><span class="counter"><?php echo @$tidak_ikut = $count_datapersonel_kotama - $count_datanilai_kotama;?></span></h2>
-                                <p><a href="<?php echo site_url("kotama/tidak_ikut_seldik"); ?>">
-                                         Jumlah Personel Tidak Mengikuti Ujian</a></p>
+                                <p><!-- <a href="<?php echo site_url("kotama/tidak_ikut_seldik"); ?>"> -->
+                                         Jumlah Personel Tidak Mengikuti Ujian<!-- </a> --></p>
                             </div>
                             <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
                         </div>

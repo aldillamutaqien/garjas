@@ -368,7 +368,7 @@ class Kotama extends CI_Controller {
                 if(!$cek){
                    
                     $data['tidak_ikut'] = $this->datanilai_model->get_data_pers_tidak_seldik_filter_by_flag_del($users->id);
-                    print_r($data['tidak_ikut']);
+                    //print_r($data['tidak_ikut']);
                 }
                
                 // if($cek){
