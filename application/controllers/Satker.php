@@ -578,7 +578,18 @@ class Satker extends CI_Controller {
         return $bmi;
     }
     
+    public function profil()
+    {
+        if(_is_user_login($this)){
+            $data = array();
 
+            $id_user = _get_current_user_id($this);
+
+            $this->load->model("personel_model");
+            $data["users"] = $this->personel_model->get_personel_by_id_user($id_user);
+            $this->load->view("satker/profil",$data);
+        }
+    }
 	
 }
 ?>

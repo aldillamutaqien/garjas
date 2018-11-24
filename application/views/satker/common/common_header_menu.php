@@ -107,15 +107,8 @@
                         </div>
                         <div id="datapersonil" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                 <li><a href="<?php echo site_url("personelfront/index") ?>">Profil</a>
+                                 <li><a href="<?php echo site_url("satker/profil") ?>">Profil</a>
                                 </li>
-                            </ul>
-                        </div>
-                        <div id="datanilai" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="<?php echo site_url("datanilaifront/tabel_nilai") ?>">Hasil Garjas</a>
-                                </li>
-                                
                             </ul>
                         </div>
                     </div>
