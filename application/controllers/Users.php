@@ -37,18 +37,8 @@ class Users extends CI_Controller {
 
                 
                
-                    $data["error"] =  "<script type='text/javascript'>
-                                                    var teks = ' ".$error_clean."';
-                                                    swal({   
-                                                            title: '',   
-                                                            text: teks,   
-                                                            type: 'warning',   
-                                                            showCancelButton: false,   
-                                                            confirmButtonColor: '#DD6B55',   
-                                                            confirmButtonText: 'OK', 
-                                                            closeOnConfirm: false 
-                                                        });
-                                            </script>";
+                    
+		     $data["msg"] =  $error_clean;
 
 
                     
@@ -73,9 +63,8 @@ class Users extends CI_Controller {
                                 "user_status"=>$status,
                                 "date_created"=>date("Y-m-d H:i:sa")));
 
-                            $data["error"] =  "<script type='text/javascript'>
-                                                    swal('Sukses!', 'Data berhasil disimpan', 'success')
-                                            </script>";
+                            
+			    $data["sukses"] =  "data berhasil disimpan";
                         
                 }
             }
@@ -107,18 +96,8 @@ class Users extends CI_Controller {
 
                 
                
-                    $data["error"] =  "<script type='text/javascript'>
-                                                    var teks = ' ".$error_clean."';
-                                                    swal({   
-                                                            title: '',   
-                                                            text: teks,   
-                                                            type: 'warning',   
-                                                            showCancelButton: false,   
-                                                            confirmButtonColor: '#DD6B55',   
-                                                            confirmButtonText: 'OK', 
-                                                            closeOnConfirm: false 
-                                                        });
-                                            </script>";
+                         
+			$data["msg"] = $error_clean  ;
                     
         		}else
                 {
@@ -143,11 +122,10 @@ class Users extends CI_Controller {
                             $this->load->model("common_model");
                             $this->common_model->data_update("users",$update_array,array("user_id"=>$user_id)
                                 );
-                               echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/users/";</script>
-                                ';
-                            $data["error"] =  "<script type='text/javascript'>
-                                                    swal('Sukses!', 'Data berhasil disimpan', 'success')
-                                            </script>";
+                               //  echo  '<script>alert("Data berhasil disimpan...");window.location = "'.site_url().'/users/";</script>
+                              //  ';
+                           $data["sukses"] =  "data berhasil disimpan";
+                           
                         
                 }
             }
@@ -187,18 +165,8 @@ function delete_user($user_id){
         		    $error_array = $this->form_validation->error_string();
                     $error_json = json_encode(strip_tags($error_array));
                     $error_clean = str_replace(['"', '"'], '', $error_json);
-                    $data["error"] =  "<script type='text/javascript'>
-                                                    var teks = ' ".$error_clean."';
-                                                    swal({   
-                                                            title: '',   
-                                                            text: teks,   
-                                                            type: 'warning',   
-                                                            showCancelButton: false,   
-                                                            confirmButtonColor: '#DD6B55',   
-                                                            confirmButtonText: 'OK', 
-                                                            closeOnConfirm: false 
-                                                        });
-                                            </script>";
+                    
+		     $data["msg"] = $error_clean ;
         		}else {
                    
                     if($user_data->user_password == md5($this->input->post("c_password"))){
