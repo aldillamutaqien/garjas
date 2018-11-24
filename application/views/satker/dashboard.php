@@ -103,7 +103,7 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h2><span class="counter"><?php echo @$count_datapersonel_satker;?></span></h2>
-                            <p><a href="<?php echo site_url("datanilai/tabel_nilai"); ?>">
+                            <p><a href="<?php echo site_url("satker/datapersonel_satker"); ?>">
                                      Jumlah Personel</a></p>
                         </div>
                         <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
@@ -113,7 +113,7 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h2><span class="counter"><?php echo @$count_datanilai_satker;?></span></h2>
-                            <p><a href="<?php echo site_url("dataadmin/"); ?>">
+                            <p><a href="<?php echo site_url("satker/datanilai_satker"); ?>">
                                      Jumlah Personel Mengikuti Ujian</a></p>
                         </div>
                         <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
@@ -123,8 +123,8 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h2><span class="counter"><?php echo @$tidak_ikut = $count_datapersonel_satker - $count_datanilai_satker;?></span></h2>
-                            <p><a href="<?php echo site_url("dataadmin/"); ?>">
-                                     Jumlah Personel Tidak Mengikuti Ujian</a></p>
+                            <p>
+                                     Jumlah Personel Tidak Mengikuti Ujian</p>
                         </div>
                         <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
                     </div>
@@ -160,7 +160,8 @@
                                     <input type="text" class="knob" value="0" data-rel="<?php echo @$count_datanilai_satker;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
                                 </div>
                                 <div class="email-ctn-nock">
-                                    <p>Personel Mengikuti Ujian</p>
+                                    <p><a href="<?php echo site_url("satker/datanilai_satker"); ?>">
+                                     Personel Mengikuti Ujian</a></p>
                                 </div>
                             </div>
                             <div class="email-round-gp">
@@ -169,7 +170,8 @@
                                         <input type="text" class="knob" value="0" data-rel="<?php echo @$count_datalulus; ?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
                                     </div>
                                     <div class="email-ctn-nock">
-                                        <p>Personel Lulus Ujian</p>
+                                        <p><a href="<?php echo site_url("satker/datapersonel_lulus_satker"); ?>">
+                                     Personel Lulus Ujian</a></p>
                                     </div>
                                 </div>
                                 <div class="email-round-pro">
@@ -177,7 +179,8 @@
                                         <input type="text" class="knob" value="0" data-rel="<?php echo @$count_datatdklulus; ?>" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled>
                                     </div>
                                     <div class="email-ctn-nock">
-                                        <p>Personel Tidak Lulus Ujian</p>
+                                        <p><a href="<?php echo site_url("satker/datapersonel_tdklulus_satker"); ?>">
+                                     Personel Tidak Lulus Ujian</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -195,11 +198,12 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="bar-chart-wp sm-res-mg-t-30 chart-display-nn">
                         <div class="curved-ctn">
-                            <h2>Kategori Seldik</h2>
-                            <p>..............................</p>
-                        
+                            <h2>Kategori Seldik  </h2>
+                            <h2> <a href="<?php echo site_url("satker/ms"); ?>">
+                                     MS</a> --- <a href="<?php echo site_url("satker/tms"); ?>">
+                                     TMS</a> </h2>
                         </div>
-                        <canvas height="158vh" width="180vw" id="barchartdklagi"></canvas>
+                        <canvas height="154vh" width="180vw" id="barchartdklagi"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
