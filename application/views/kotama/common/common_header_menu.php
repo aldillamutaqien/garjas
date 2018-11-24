@@ -7,7 +7,7 @@
                         </li>
                         <li><a data-toggle="tab" href="#datapersonil"><i class="notika-icon notika-support"></i> Data Personel</a>
                         </li>
-                        <li><a data-toggle="tab" href="#datanilai"><i class="notika-icon notika-edit"></i> Data Nilai</a>
+                        <li><a data-toggle="tab" href="#datanilai"><i class="notika-icon notika-edit"></i> Data Nilai Satker</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
@@ -115,9 +115,10 @@
                         </div>
                         <div id="datanilai" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="<?php echo site_url("kotama/nilai_satker") ?>">Data Nilai Satker</a>
+                                <?php foreach($satker as $satker) { ?>
+                                <li><a href="<?php echo site_url("kotama/nilai_satker/$satker->kesatuan") ?>"><?php echo $satker->kesatuan ?></a>
                                 </li>
-                                
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>

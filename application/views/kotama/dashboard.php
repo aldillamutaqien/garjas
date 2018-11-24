@@ -123,6 +123,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                             <div class="website-traffic-ctn">
+
                                 <h2><span class="counter"><?php echo $tidak_ikut = $count_datapersonel_kotama - $count_datanilai_kotama;?></span></h2>
                                 <p><a href="<?php echo site_url("dataadmin/"); ?>">
                                          Jumlah Personel Tidak Mengikuti Ujian</a></p>
@@ -150,10 +151,9 @@
                                  <div class="email-ctn-nock">
                                     <p>Jumlah Peserta Seldik </p>
                                 </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiktukba;?></span></h1></center>
-                               
-                               
+                                <div class="email-round-nock">
+                                    <input type="text" class="knob" value="0" data-rel="<?php echo $count_datadiktukba;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                                </div>
                             </div>
                            
                             <div class="email-round-gp">
@@ -188,10 +188,9 @@
                                  <div class="email-ctn-nock">
                                     <p>Jumlah Peserta Seldik </p>
                                 </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiktukpa;?></span></h1></center>
-                               
-                               
+                                 <div class="email-round-nock">
+                                    <input type="text" class="knob" value="0" data-rel="<?php echo $count_datadiktukpa;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                                </div>
                             </div>
                            
                             <div class="email-round-gp">
@@ -226,10 +225,9 @@
                                 <div class="email-ctn-nock">
                                     <p>Jumlah Peserta Seldik </p>
                                 </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiklapa1;?></span></h1></center>
-                               
-                                
+                                <div class="email-round-nock">
+                                    <input type="text" class="knob" value="0" data-rel="<?php echo $count_datadiklapa1;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                                </div>
                             </div>
                            
                             <div class="email-round-gp">
@@ -264,10 +262,9 @@
                                  <div class="email-ctn-nock">
                                     <p>Jumlah Peserta Seldik </p>
                                 </div>
-                                
-                                    <center><h1><span class="counter"><?php echo $count_datadiklapa2;?></span></h1></center>
-                               
-                               
+                                 <div class="email-round-nock">
+                                    <input type="text" class="knob" value="0" data-rel="<?php echo $count_datadiklapa2;?>" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                                </div>
                             </div>
                            
                             <div class="email-round-gp">
@@ -295,34 +292,34 @@
             </div>
         </div>
     </div>
-     <div class="bar-chart-area">
+      <div class="bar-chart-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp">
-                        <canvas height="140vh" width="180vw" id="barchartdk"></canvas>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="bar-chart-wp sm-res-mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart2"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart3"></canvas>
+                        <div class="curved-ctn">
+                            <h2>Kategori Postur Seldik</h2>
+                            <p>..............................</p>
+                        
+                        </div>
+                        <canvas height="158vh" width="180vw" id="barchartdklagi"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp mg-t-30 chart-display-nn">
-                        <canvas height="140vh" width="180vw" id="barchart4"></canvas>
+                     <div class="bar-chart-wp sm-res-mg-t-30 chart-display-nn">
+                        <div class="curved-inner-pro">
+                            <div class="curved-ctn">
+                                <h2>Kalender</h2>
+                                <p>..............................</p>
+                            </div>
+                        </div>
+                        <div id="calendar" ></div> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Breadcomb area End-->
 
     <!-- Start Footer area-->
@@ -356,27 +353,23 @@
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/charts/Chart.js"); ?>"></script>
     <script src="<?php echo base_url($this->config->item("theme_admin")."/js/charts/bar-chart.js"); ?>"></script>
     <script>
-            var ctx = document.getElementById("barchartdk");
-            var barchart1 = new Chart(ctx, {
+            var datams = <?php echo $count_datams;?>;
+            var datatms = <?php echo $count_datatms;?>;
+            var ctx = document.getElementById("barchartdklagi");
+          var barchart2 = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["Istimewa", "Baik Sekali", "Baik", "Cukup", "Kurang"],
+                    labels: ["MS", "TMS"],
                     datasets: [{
-                        label: 'Bar Chart',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: '',
+                        data: [datams, datatms],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
-                             'rgb(50,205,50, 0.2)',
-                             'rgba(255, 206, 86, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(0, 0, 0, 0.2)'
+                            'rgba(255, 99, 132, 0.2)'
                         ],
                         borderColor: [
                             'rgba(75, 192, 192, 1)',
-                             'rgba(54, 162, 235, 1)',
-                             'rgba(255, 206, 86, 1)',
-                            'rgba(255,99,132,1)',
-                            'rgba(0, 0, 0, 1)'
+                            'rgba(255,99,132,1)'
                         ],
                         borderWidth: 1
                     }]

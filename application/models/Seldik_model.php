@@ -238,6 +238,18 @@ class Seldik_model extends CI_Model{
         return $q->result();
     }
 
+     function get_ms_by_kotama_this_year($nama_kotama){
+        $q = $this->db->query("
+            select * from personel 
+            left join tb_nilai on personel.id = tb_nilai.id_data_personil
+            where personel.nama_kotama = '".$nama_kotama."'
+            and personel.flag_del = 0
+            and tb_nilai.kategori = 'Memenuhi Sarat'
+            and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+            ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
     function get_tms_by_kesatuan_this_year($kesatuan){
         $q = $this->db->query("
         	select * from personel 
@@ -247,6 +259,18 @@ class Seldik_model extends CI_Model{
 			and tb_nilai.kategori = 'Tidak Memenuhi Sarat'
 			and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
 			ORDER BY tb_nilai.date_created DESC");
+        return $q->result();
+    }
+
+     function get_tms_by_kotama_this_year($nama_kotama){
+        $q = $this->db->query("
+            select * from personel 
+            left join tb_nilai on personel.id = tb_nilai.id_data_personil
+            where personel.nama_kotama = '".$nama_kotama."'
+            and personel.flag_del = 0
+            and tb_nilai.kategori = 'Tidak Memenuhi Sarat'
+            and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
+            ORDER BY tb_nilai.date_created DESC");
         return $q->result();
     }
 
