@@ -20,7 +20,27 @@
                         <div class="cmp-tb-hd cmp-int-hd">
                             <h2>Tambah Personel</h2>
                         </div>
-                        <div class="form-example-int form-horizental">
+			
+			    <?php if(isset($msg)): ?>
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                    <?= validation_errors();?>
+                    <?= isset($msg)? $msg: ''; ?>
+                 </div>
+                <?php endif; ?>
+
+                 <?php if(isset($sukses)): ?>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Success</h4>
+                    <?= validation_errors();?>
+                    <?= isset($sukses)? $sukses: ''; ?>
+                 </div>
+		 <?php endif; ?>
+  
+  
+                      <div class="form-example-int form-horizental">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
@@ -133,7 +153,7 @@
                                     <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">                                   
                                     <div class="input-group date nk-int-st">
                                         <span class="input-group-addon"></span>
-                                        <input type="text" name="tanggal_lahir" class="form-control">
+                                        <input type="text" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir">
                                     </div>
                                 </div>
                                     </div>
@@ -165,7 +185,7 @@
                                      <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
                                           <select name="satker" class="selectpicker" data-live-search="true">
-                                            <option value="0">--Pilih Satker--</option>
+                                            <option value="0" disabled selected>--Pilih Satker--</option>
                                             <?php 
                                                 foreach ($satker->result() as $data) {
                                                 ?>
@@ -187,7 +207,7 @@
                                      <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
                                           <select name="kotama" class="selectpicker" data-live-search="true" >
-                                            <option value="0">--Pilih Kotama--</option>
+                                            <option value="0" disabled selected>--Pilih Kotama--</option>
                                             <?php 
                                                 foreach ($kotama->result() as $data) {
                                                 ?>
