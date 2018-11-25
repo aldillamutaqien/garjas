@@ -235,7 +235,7 @@
                                     <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">                                   
                                     <div class="input-group date nk-int-st">
                                         <span class="input-group-addon"></span>
-                                        <input type="text" name="tgl_pelaksanaan" class="form-control" value="<?php echo date('d/m/Y',strtotime($nilai->date_created)) ; ?>">
+                                        <input type="text" name="tgl_pelaksanaan" class="form-control" value="<?php echo date('m/d/Y',strtotime($nilai->date_created)) ; ?>">
                                     </div>
                                 </div>
                                     </div>

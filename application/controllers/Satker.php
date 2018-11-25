@@ -590,67 +590,6 @@ class Satker extends CI_Controller {
             $this->load->view("satker/profil",$data);
         }
     }
-
-
-
-    function dashboardlastyear(){
-        if(_is_user_login($this)){
-            $data = array();
-
-            $tahunlalu = date('Y', strtotime('-1 year')); 
-
-            $this->load->model("personel_model");
-            $this->load->model("datanilai_model");  
-            $this->load->model("seldik_model");          
-           
-            $id_user = _get_current_user_id($this);
-
-
-            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
-            $data['datanilai_satker'] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_last_year($data['datapersonel']->kesatuan);
-            $data["datapersonel_satker"] = @$this->personel_model->get_personel_by_satker($data['datapersonel']->kesatuan);
-
-            $data["datadiktukba"] = @$this->seldik_model->get_personel_diktukba_by_satker_last_year($data['datapersonel']->kesatuan);
-            $data["datadiktukpa"] = @$this->seldik_model->get_personel_diktukpa_by_satker_last_year($data['datapersonel']->kesatuan);
-            $data["datadiklapa1"] = @$this->seldik_model->get_personel_diklapasatu_by_satker_last_year($data['datapersonel']->kesatuan);
-            $data["datadiklapa2"] = @$this->seldik_model->get_personel_diklapadua_by_satker_last_year($data['datapersonel']->kesatuan);
-
-
-            $data["datalulus"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_lulus_last_year($data['datapersonel']->kesatuan);
-            $data["datatdklulus"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus_last_year($data['datapersonel']->kesatuan);
-
-
-            $data["datalulus_diktuba"] = @$this->seldik_model->get_lulus_diktukba_by_kesatuan_last_year($data['datapersonel']->kesatuan);
-            $data["datalulus_diktupa"] = @$this->seldik_model->get_lulus_diktukpa_by_kesatuan_last_year($data['datapersonel']->kesatuan);
-            $data["datalulus_diklapa1"] = @$this->seldik_model->get_lulus_diklapasatu_by_kesatuan_last_year($data['datapersonel']->kesatuan);
-            $data["datalulus_diklapa2"] = @$this->seldik_model->get_lulus_diklapadua_by_kesatuan_last_year($data['datapersonel']->kesatuan);
-            $data["datams"] = @$this->seldik_model->get_ms_by_kesatuan_last_year($data['datapersonel']->kesatuan);
-            $data["datatms"] = @$this->seldik_model->get_tms_by_kesatuan_last_year($data['datapersonel']->kesatuan);
-
-
-            
-            $data['count_datams'] = count($data["datams"]);
-            $data['count_datatms'] = count($data["datatms"]);
-
-
-            $data['count_datalulus_diktuba'] = count($data["datalulus_diktuba"]);
-            $data['count_datalulus_diktupa'] = count($data["datalulus_diktupa"]);
-            $data['count_datalulus_diklapa1'] = count($data["datalulus_diklapa1"]);
-            $data['count_datalulus_diklapa2'] = count($data["datalulus_diklapa2"]);
-
-            $data['count_datalulus'] = count($data["datalulus"]);
-            $data['count_datatdklulus'] = count($data["datatdklulus"]);
-            $data['count_datadiktukba'] = count($data["datadiktukba"]);
-            $data['count_datadiktukpa'] = count($data["datadiktukpa"]);
-            $data['count_datadiklapa1'] = count($data["datadiklapa1"]);
-            $data['count_datadiklapa2'] = count($data["datadiklapa2"]);
-            $data['count_datapersonel_satker'] = count($data["datapersonel_satker"]);
-            $data['count_datanilai_satker'] = count($data["datanilai_satker"]);
-
-
-            $this->load->view("satker/dashboardlastyear",$data);
-        }
-    }
 	
 }
 ?>

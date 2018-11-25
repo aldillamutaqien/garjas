@@ -20,30 +20,6 @@
                         <div class="cmp-tb-hd cmp-int-hd">
                             <h2>Edit Pengguna</h2>
                         </div>
-			
-			  <?php if(isset($msg)): ?>
-                <div class="alert alert-warning alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4><i class="icon fa fa-warning"></i> Alert!</h4>
-                    <?= validation_errors();?>
-                    <?= isset($msg)? $msg: ''; ?>
-                 </div>
-
-
-
-                 <?php endif; ?>
-
-                 <?php if(isset($sukses)): ?>
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4><i class="icon fa fa-check"></i> Success</h4>
-                    <?= validation_errors();?>
-                    <?= isset($sukses)? $sukses: ''; ?>
-                 </div>
-
-
-
-                 <?php endif; ?>
                         <div class="form-example-int form-horizental">
                             <div class="form-group">
                                 <div class="row">

@@ -21,6 +21,7 @@ class Kotama extends CI_Controller {
             //print_r($user_id);die();        
             $data = array();
             $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            //print_r($data['kotama']);
             $data['seldik']= @$this->seldik_model->get_seldik()->result();
             $data['datanilai_kotama'] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kotama($data['kotama']->nama_kotama);
             $data["datapersonel_kotama"] = @$this->personel_model->get_personel_by_kotama($data['kotama']->nama_kotama);
@@ -37,7 +38,7 @@ class Kotama extends CI_Controller {
             $data["lulus_diklapa2"] = @$this->seldik_model->get_lulus_diklapadua_by_kotama_this_year($data['kotama']->nama_kotama);
             $data["datams"] = @$this->seldik_model->get_ms_by_kotama_this_year($data['kotama']->nama_kotama);
             $data["datatms"] = @$this->seldik_model->get_tms_by_kotama_this_year($data['kotama']->nama_kotama);
-           //print_r(count($data["lulus_diktukba"]));
+          // print_r(count($data["datadiklapa1"]));
 
 
             $data['count_datanilai_kotama'] = count($data["datanilai_kotama"]);
@@ -300,6 +301,170 @@ class Kotama extends CI_Controller {
 
         }
 
+    function diktukba_satker($kesatuan){
+        if(_is_user_login($this)){
+            $data = array();
+            $kesatuan = urldecode($kesatuan);
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model"); 
+
+         
+           
+            $id_user = _get_current_user_id($this);
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->seldik_model->get_personel_diktukba_by_satker_this_year($kesatuan);
+
+            $this->load->model('satker_model');
+            $this->load->model('kotama_model');
+            $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            $data["satuan"]       = @$this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
+
+            $this->load->view("kotama/data",$data);
+
+            }
+
+        }
+
+        function diktukpa_satker($kesatuan){
+        if(_is_user_login($this)){
+            $data = array();
+            $kesatuan = urldecode($kesatuan);
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->seldik_model->get_personel_diktukpa_by_satker_this_year($kesatuan);
+
+            $this->load->model('satker_model');
+            $this->load->model('kotama_model');
+            $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            $data["satuan"]       = @$this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
+
+            $this->load->view("kotama/data",$data);
+
+            }
+
+        }
+
+         function diklapa1_satker($kesatuan){
+        if(_is_user_login($this)){
+            $data = array();
+            $kesatuan = urldecode($kesatuan);
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->seldik_model->get_personel_diklapasatu_by_satker_this_year($kesatuan);
+
+
+            $this->load->model('satker_model');
+            $this->load->model('kotama_model');
+            $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            $data["satuan"]       = @$this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
+
+            $this->load->view("kotama/data",$data);
+
+            }
+
+        }
+
+    function diklapa2_satker($kesatuan){
+        if(_is_user_login($this)){
+            $data = array();
+            $kesatuan = urldecode($kesatuan);
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->seldik_model->get_personel_diklapadua_by_satker_this_year($kesatuan);
+
+            $this->load->model('satker_model');
+            $this->load->model('kotama_model');
+            $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            $data["satuan"]       = @$this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
+
+            $this->load->view("kotama/data",$data);
+
+            }
+
+        }
+
+    function datapersonel_satker($kesatuan){
+        if(_is_user_login($this)){
+            $data = array();
+            $kesatuan = urldecode($kesatuan);
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->personel_model->get_personel_by_satker($kesatuan);
+
+            $this->load->model('satker_model');
+            $this->load->model('kotama_model');
+            $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            $data["satuan"]       = @$this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
+
+            $this->load->view("kotama/data_personel_satker",$data);
+
+            }
+
+        }
+
+        function datanilai_satker($kesatuan){
+        if(_is_user_login($this)){
+            $data = array();
+            $kesatuan = urldecode($kesatuan);
+
+            $this->load->model("personel_model");
+            $this->load->model("datanilai_model");  
+            $this->load->model("seldik_model");          
+           
+            $id_user = _get_current_user_id($this);
+
+
+            $data['datapersonel'] = @$this->personel_model->get_personel_by_id_user($id_user);
+
+            $data["data_selidik"] = @$this->datanilai_model->get_datanilai_filter_by_flag_del_and_kesatuan($kesatuan);
+
+            $this->load->model('satker_model');
+            $this->load->model('kotama_model');
+            $data['kotama']= @$this->kotama_model->get_kotama_by_id_user($user_id);
+            $data["satuan"]       = @$this->satker_model->get_all_satker_by_kotama($data['kotama']->nama_kotama);
+
+            $this->load->view("kotama/data_peserta_seldik_satker",$data);
+
+            }
+
+        }
+
+
         function data_personel(){
             if(_is_user_login($this)){
             $data = array();
@@ -417,7 +582,7 @@ class Kotama extends CI_Controller {
             //$cek_nilai = $this->cek_nilai_max($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run);
             $nilai_total = $this->get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run,$renang);
             $data['nilai_total'] = $nilai_total;
-            //print_r($data['nilai_total']);die();
+            //print_r($data['nilai_total']);
             @$nilai_b = ($nilai_total['pull_up']->nilai_pull_up + $nilai_total['sit_up']->nilai_sit_up + $nilai_total['push_up']->nilai_push_up+$nilai_total['shuttle_run']->nilai_shuttle_run) / 4;
             //print_r($nilai_total['sit_up']->nilai_sit_up);die();
             $nilai_renang = $nilai_total['renang']->nilai_renang;
@@ -427,9 +592,9 @@ class Kotama extends CI_Controller {
             $data['nilai_ab']= round($nilai_ab,2);
             //print_r($nilai_ab);die();
             $data["nilai"] = $nilai;
-            
+            //print_r($nilai);
             @$penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_total['lari']->nilai_lari,$nilai_total['pull_up']->nilai_pull_up,$nilai_total['sit_up']->nilai_sit_up,$nilai_total['push_up']->nilai_push_up,$nilai_total['shuttle_run']->nilai_shuttle_run);
-            // print_r($penilaian);die();
+             //print_r($penilaian);
             // print_r($kategori.'<br>'.$nilai_ab.'<br>'.$nilai_total);die();
             $data['jumlah_nilai'] = round($nilai[0]->nilai,2);
             $data['keterangan'] = $penilaian['keterangan'];

@@ -427,6 +427,8 @@ class Datanilai extends CI_Controller {
                         $waktu_renang = $this->input->post("waktu_renang");
                         $tgl_pelaksanaan = $this->input->post("tgl_pelaksanaan");
 
+                        //print_r(date("Y-m-d",strtotime($tgl_pelaksanaan)));die();
+
                         $nilai = $this->datanilai_model->get_datanilai_by_id($user_id);
                          //print("<pre>".print_r($nilai,true)."</pre>");die();
                         $bmi = round( $this->get_bmi($tinggi_badan,$berat_badan),2);

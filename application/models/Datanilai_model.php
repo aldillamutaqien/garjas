@@ -1,38 +1,5 @@
 <?php
 class Datanilai_model extends CI_Model{
-
-     function begin_date_year(){
-
-        $begin_date_year =  date("Y-01-01");
-
-        return $begin_date_year;
-     }
-
-     function end_date_year(){
-
-        $end_date_year =  date("Y-12-31");
-            
-        return $end_date_year;
-     }
-
-
-    function begin_date_last_year(){
-
-        $tahunlalu = date('Y', strtotime('-1 year')); 
-        $begin_date_last_year =  date($tahunlalu."-01-01");
-
-        return $begin_date_last_year;
-     }
-
-     function end_date_last_year(){
-        $tahunlalu = date('Y', strtotime('-1 year')); 
-        $end_date_last_year =  date($tahunlalu."-12-31");
-            
-        return $end_date_last_year;
-     }
-
-
-
       public function get_datanilai_filter_by_flag_del(){
         
         $this->db->select('personel.id as id_data_personil,personel.nama as nama, personel.pangkat as pangkat,personel.korps as korps,personel.nrp as nrp,personel.jenis_kelamin as jenis_kelamin,personel.jabatan as jabatan,personel.kesatuan as kesatuan,personel.matra as matra, personel.tanggal_lahir as tanggal_lahir,tb_nilai.id as id_nilai,tb_nilai.date_created as tgl_pelaksanaan,tb_nilai.nilai as nilai,tb_nilai.keterangan as keterangan,personel.nama_kotama as nama_kotama,tb_nilai.nama_seldik as nama_seldik');
@@ -137,13 +104,13 @@ class Datanilai_model extends CI_Model{
 
     public function get_datanilai_filter_by_flag_del_and_kesatuan($kesatuan){
         
-        $q = $this->db->query("
-            select * from personel 
-            left join tb_nilai on personel.id = tb_nilai.id_data_personil
-            where personel.kesatuan = '".$kesatuan."'
-            and personel.flag_del = 0
-            and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
-            ORDER BY tb_nilai.date_created DESC");
+        $this->db->select();
+        $this->db->from('personel');
+        $this->db->join('tb_nilai','personel.id = tb_nilai.id_data_personil');
+        $this->db->where('tb_nilai.flag_del',0);
+        $this->db->where('personel.kesatuan',$kesatuan);
+         //$this->db->where_not_in('id',_get_current_user_id($this));
+        $q = $this->db->get();
         return $q->result();
 
        
@@ -165,83 +132,35 @@ class Datanilai_model extends CI_Model{
 
     function get_datanilai_filter_by_flag_del_and_kesatuan_and_lulus($kesatuan){
         
-        $q = $this->db->query("
-            select * from personel 
-            left join tb_nilai on personel.id = tb_nilai.id_data_personil
-            where personel.kesatuan = '".$kesatuan."'
-            and personel.flag_del = 0
-            and tb_nilai.keterangan = 'Lulus'
-            and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
-            ORDER BY tb_nilai.date_created DESC");
+        $this->db->select();
+        $this->db->from('personel');
+        $this->db->join('tb_nilai','personel.id = tb_nilai.id_data_personil');
+        $this->db->where('tb_nilai.flag_del',0);
+        $this->db->where('personel.kesatuan',$kesatuan);
+        $this->db->where('tb_nilai.keterangan','Lulus');
+         //$this->db->where_not_in('id',_get_current_user_id($this));
+        $q = $this->db->get();
         return $q->result();
 
        
     }
-
 
     function get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus($kesatuan){
         
-        $q = $this->db->query("
-            select * from personel 
-            left join tb_nilai on personel.id = tb_nilai.id_data_personil
-            where personel.kesatuan = '".$kesatuan."'
-            and personel.flag_del = 0
-            and tb_nilai.keterangan = 'Tidak Lulus'
-            and tb_nilai.date_created BETWEEN '".$this->begin_date_year()."' and '".$this->end_date_year()."'
-            ORDER BY tb_nilai.date_created DESC");
+        $this->db->select();
+        $this->db->from('personel');
+        $this->db->join('tb_nilai','personel.id = tb_nilai.id_data_personil');
+        $this->db->where('tb_nilai.flag_del',0);
+        $this->db->where('personel.kesatuan',$kesatuan);
+        $this->db->where('tb_nilai.keterangan','Tidak Lulus');
+         //$this->db->where_not_in('id',_get_current_user_id($this));
+        $q = $this->db->get();
         return $q->result();
 
        
     }
 
-
-
-    function get_datanilai_filter_by_flag_del_and_kesatuan_and_lulus_last_year($kesatuan){
-        
-        $q = $this->db->query("
-            select * from personel 
-            left join tb_nilai on personel.id = tb_nilai.id_data_personil
-            where personel.kesatuan = '".$kesatuan."'
-            and personel.flag_del = 0
-            and tb_nilai.keterangan = 'Lulus'
-            and tb_nilai.date_created BETWEEN '".$this->begin_date_last_year()."' and '".$this->end_date_last_year()."'
-            ORDER BY tb_nilai.date_created DESC");
-        return $q->result();
-
-       
-    }
-
-
-    function get_datanilai_filter_by_flag_del_and_kesatuan_and_tdklulus_last_year($kesatuan){
-        
-        $q = $this->db->query("
-            select * from personel 
-            left join tb_nilai on personel.id = tb_nilai.id_data_personil
-            where personel.kesatuan = '".$kesatuan."'
-            and personel.flag_del = 0
-            and tb_nilai.keterangan = 'Tidak Lulus'
-            and tb_nilai.date_created BETWEEN '".$this->begin_date_last_year()."' and '".$this->end_date_last_year()."'
-            ORDER BY tb_nilai.date_created DESC");
-        return $q->result();
-
-       
-    }
-
-    public function get_datanilai_filter_by_flag_del_and_kesatuan_last_year($kesatuan){
-        
-        $q = $this->db->query("
-            select * from personel 
-            left join tb_nilai on personel.id = tb_nilai.id_data_personil
-            where personel.kesatuan = '".$kesatuan."'
-            and personel.flag_del = 0
-            and tb_nilai.date_created BETWEEN '".$this->begin_date_last_year()."' and '".$this->end_date_last_year()."'
-            ORDER BY tb_nilai.date_created DESC");
-        return $q->result();
-
-       
-    }
-	
-	public function get_data_pers_tidak_seldik_filter_by_flag_del($id){
+    public function get_data_pers_tidak_seldik_filter_by_flag_del($id){
         
         $this->db->select();
         $this->db->from('personel');
@@ -251,11 +170,14 @@ class Datanilai_model extends CI_Model{
         $q = $this->db->get();
         return $q->result();
 
-	}
-	
-	function cek_nilai_by_id($id){
-		return $this->db->query("SELECT * FROM tb_nilai WHERE id_data_personil = '$id' ");
-	}
+       
+    }
+
+
+function cek_nilai_by_id($id){
+    return $this->db->query("SELECT * FROM tb_nilai WHERE id_data_personil = '$id' ");
+}
+
 
 }
 ?>

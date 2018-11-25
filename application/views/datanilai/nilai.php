@@ -169,9 +169,9 @@
                                                     <div class="invoice-hs">
                                                     <?php } ?>
                                                  
-                                                    <span>Nilai B = <?php echo $nilai_b; ?>
-                                                        <br>Nilai A+B = <?php echo $nilai_ab; ?>
-                                                        <br>Nilai (A+B) + Renang = <?php echo $nilai_ab; ?></span>
+                                                    <span>Nilai A = <?php echo $nilai_total['lari']->nilai_lari ?>
+                                                        <br>Nilai B = <?php echo $nilai_b; ?>
+                                                        <br>Nilai A+B = <?php echo $nilai_ab; ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -188,6 +188,12 @@
                                     </div>
                                 </div>
                                 <hr>
+                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                                            <div class="breadcomb-report">
+                                             <a href="<?php echo site_url("datanilai/update_nilai/".$data->id); ?>"><i class="notika-icon notika-success"></i> Update Nilai</a>
+                                            
+                                            </div>
+                                        </div>
                              
                             </div>
                         </div>
