@@ -375,6 +375,7 @@ function delete_personel($id){
                         //         "date_created"=>date("Y-m-d H:i:sa"),
                         //         "flag_del"=>0);
                         // print_r($array);die();
+                        // var_dump(date('Y-m-d', strtotime($tanggal_lahir))); die();
                         
                               $update_array = array(
                                 "nama"=>$nama,
@@ -406,6 +407,7 @@ function delete_personel($id){
              $data["satker"] = $this->personel_model->get_satker();
             //print_r($data["kotama"]);die();
             $data["user"] = $this->personel_model->get_user()->result();
+            $data["personel"] = $this->personel_model->get_personel_by_id($id);
             $this->load->view("personel/edit_personel",$data);
         }
     }

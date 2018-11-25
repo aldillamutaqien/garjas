@@ -231,9 +231,10 @@
                                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
                                           <select name="matra" class="selectpicker" data-live-search="true">
-                                           <?php foreach($personel as $matra){?>
-                                                        <option value="<?php echo $personel->matra; ?>" <?php if($personel->matra){ echo "selected"; } ?> ><?php echo $personel->matra; ?></option>
-                                                    <?php } ?>                                           
+                                            <option value="<?php echo $personel->matra; ?>"  <?php if($personel->matra){ echo "selected"; } ?> ><?php echo $personel->matra; ?></option>
+                                            <option value="TNI AD">TNI AD</option>
+                                            <option value="TNI AL">TNI AL</option>
+                                            <option value="TNI AU">TNI AU</option>                                           
                                           </select>
                                         </div>
                                     </div>
