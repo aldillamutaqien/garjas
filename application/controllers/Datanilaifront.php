@@ -66,7 +66,7 @@ class Datanilaifront extends CI_Controller {
             $nilai_total = $this->get_nilai_b($kelompok_umur,$jenis_kelamin,$pull_up,$sit_up,$push_up,$lari,$shuttle_run,$renang);
             $data['nilai_total'] = $nilai_total;
             //print_r($data['nilai_total']);die();
-            $nilai_b = ($nilai_total['pull_up']->nilai_pull_up + $nilai_total['sit_up']->nilai_sit_up + $nilai_total['push_up']->nilai_push_up+$nilai_total['shuttle_run']->nilai_shuttle_run) / 4;
+            @$nilai_b = ($nilai_total['pull_up']->nilai_pull_up + $nilai_total['sit_up']->nilai_sit_up + $nilai_total['push_up']->nilai_push_up+$nilai_total['shuttle_run']->nilai_shuttle_run) / 4;
             //print_r($nilai_total['sit_up']->nilai_sit_up);die();
             $nilai_renang = $nilai_total['renang']->nilai_renang;
             //print_r($nilai_renang);
@@ -76,7 +76,7 @@ class Datanilaifront extends CI_Controller {
             //print_r($nilai_ab);die();
             $data["nilai"] = $nilai;
             
-            $penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_total['lari']->nilai_lari,$nilai_total['pull_up']->nilai_pull_up,$nilai_total['sit_up']->nilai_sit_up,$nilai_total['push_up']->nilai_push_up,$nilai_total['shuttle_run']->nilai_shuttle_run);
+            @$penilaian = $this->nilai_total($kategori,$nilai_ab,$nilai_renang,$nilai_postur,$nilai_total['lari']->nilai_lari,$nilai_total['pull_up']->nilai_pull_up,$nilai_total['sit_up']->nilai_sit_up,$nilai_total['push_up']->nilai_push_up,$nilai_total['shuttle_run']->nilai_shuttle_run);
             // print_r($penilaian);die();
             // print_r($kategori.'<br>'.$nilai_ab.'<br>'.$nilai_total);die();
             $data['jumlah_nilai'] = round($nilai[0]->nilai,2);
