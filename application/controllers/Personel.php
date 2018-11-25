@@ -31,7 +31,7 @@ class Personel extends CI_Controller {
                
                 $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'trim|required');
                 $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'trim|required');
-                $this->form_validation->set_rules('user_name', 'User Name', 'trim|required');
+               
                 $this->form_validation->set_rules('matra', 'Matra', 'trim|required');
                 $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
                
@@ -69,7 +69,7 @@ class Personel extends CI_Controller {
                         
                         $matra = $this->input->post("matra");
 
-                        $user_name = $this->input->post("user_name");
+                      
 
                         $jabatan = $this->input->post("jabatan");
                         
@@ -108,7 +108,6 @@ class Personel extends CI_Controller {
                                 "kesatuan"=>$satker,
                                 "id_kotama"=>$id_kotama,
                                 "nama_kotama"=>$nama_kotama,
-                                "user_name"=>$user_name,
                                 "id_user"=>$id_user,
                                 "date_created"=>date("Y-m-d H:i:sa"),
                                 "flag_del"=>0);
@@ -129,7 +128,6 @@ class Personel extends CI_Controller {
                                 "kesatuan"=>$satker,
                                 "id_kotama"=>$id_kotama,
                                 "nama_kotama"=>$nama_kotama,
-                                "user_name"=>$user_name,
                                 "id_user"=>$id_user,
                                 "date_created"=>date("Y-m-d H:i:sa"),
                                 "flag_del"=>0));
